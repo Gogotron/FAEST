@@ -3,6 +3,7 @@
     \begin{tikzpicture}
       \useasboundingbox (-4,1) rectangle (4,-5);
       \tikzset{mystyle/.style={circle,fill=black,inner sep=1pt,outer sep=3pt}}
+      \tikzset{leaf/.style={circle,inner sep=1pt,outer sep=0pt,font=\footnotesize}}
 
       % Root node
       \node (root) at (0,0) {root};
@@ -18,9 +19,9 @@
       }
       \only<4->{
         \node[mystyle          ] (L) at ($(root)+(-2,-1)$) {};
-        \node[mystyle,inner sep=2pt,fill=yellow] at (R) {};
+        \node[mystyle,inner sep=4pt,fill=yellow] at (R) {};
         \node[mystyle,fill=blue] (R) at ($(root)+(+2,-1)$) {};
-        \node[mystyle,inner sep=2pt,fill=yellow] at (LL) {};
+        \node[mystyle,inner sep=4pt,fill=yellow] at (LL) {};
         \node[mystyle,fill=blue] (LL) at ($(L)+(-1,-1)$) {};
         \node[mystyle          ] (LR) at ($(L)+(+1,-1)$) {};
         \node[mystyle,fill=blue] (RL) at ($(R)+(-1,-1)$) {};
@@ -29,25 +30,25 @@
 
       % Leaf nodes
       \only<-2>{
-        \node[mystyle] (LLL) at ($(LL)+(-0.5,-1)$) {};
-        \node[mystyle] (LLR) at ($(LL)+(+0.5,-1)$) {};
-        \node[mystyle] (LRL) at ($(LR)+(-0.5,-1)$) {};
-        \node[mystyle] (LRR) at ($(LR)+(+0.5,-1)$) {};
-        \node[mystyle] (RLL) at ($(RL)+(-0.5,-1)$) {};
-        \node[mystyle] (RLR) at ($(RL)+(+0.5,-1)$) {};
-        \node[mystyle] (RRL) at ($(RR)+(-0.5,-1)$) {};
-        \node[mystyle] (RRR) at ($(RR)+(+0.5,-1)$) {};
+        \node[leaf] (LLL) at ($(LL)+(-0.5,-1)$) {$\mathsf{sd}_0$};
+        \node[leaf] (LLR) at ($(LL)+(+0.5,-1)$) {$\mathsf{sd}_1$};
+        \node[leaf] (LRL) at ($(LR)+(-0.5,-1)$) {$\mathsf{sd}_2$};
+        \node[leaf] (LRR) at ($(LR)+(+0.5,-1)$) {$\mathsf{sd}_3$};
+        \node[leaf] (RLL) at ($(RL)+(-0.5,-1)$) {$\mathsf{sd}_4$};
+        \node[leaf] (RLR) at ($(RL)+(+0.5,-1)$) {$\mathsf{sd}_5$};
+        \node[leaf] (RRL) at ($(RR)+(-0.5,-1)$) {$\mathsf{sd}_6$};
+        \node[leaf] (RRR) at ($(RR)+(+0.5,-1)$) {$\mathsf{sd}_7$};
       }
       \only<3->{
-        \node[mystyle,fill=blue] (LLL) at ($(LL)+(-0.5,-1)$) {};
-        \node[mystyle,fill=blue] (LLR) at ($(LL)+(+0.5,-1)$) {};
-        \node[mystyle,fill=red ] (LRL) at ($(LR)+(-0.5,-1)$) {};
-        \only<4->{\node[mystyle,inner sep=2pt,fill=yellow] at (LRR) {};}
-        \node[mystyle,fill=blue] (LRR) at ($(LR)+(+0.5,-1)$) {};
-        \node[mystyle,fill=blue] (RLL) at ($(RL)+(-0.5,-1)$) {};
-        \node[mystyle,fill=blue] (RLR) at ($(RL)+(+0.5,-1)$) {};
-        \node[mystyle,fill=blue] (RRL) at ($(RR)+(-0.5,-1)$) {};
-        \node[mystyle,fill=blue] (RRR) at ($(RR)+(+0.5,-1)$) {};
+        \node[leaf,text=blue] (LLL) at ($(LL)+(-0.5,-1)$) {$\mathsf{sd}_0$};
+        \node[leaf,text=blue] (LLR) at ($(LL)+(+0.5,-1)$) {$\mathsf{sd}_1$};
+        \only<4->{\node[mystyle,inner sep=4pt,fill=yellow,text=yellow] at (LRR) {};}
+        \node[leaf,text=red ] (LRL) at ($(LR)+(-0.5,-1)$) {$\mathsf{sd}_2$};
+        \node[leaf,text=blue] (LRR) at ($(LR)+(+0.5,-1)$) {$\mathsf{sd}_3$};
+        \node[leaf,text=blue] (RLL) at ($(RL)+(-0.5,-1)$) {$\mathsf{sd}_4$};
+        \node[leaf,text=blue] (RLR) at ($(RL)+(+0.5,-1)$) {$\mathsf{sd}_5$};
+        \node[leaf,text=blue] (RRL) at ($(RR)+(-0.5,-1)$) {$\mathsf{sd}_6$};
+        \node[leaf,text=blue] (RRR) at ($(RR)+(+0.5,-1)$) {$\mathsf{sd}_7$};
       }
       \node[left=0pt of LLL] {Seeds:};
 
@@ -88,7 +89,7 @@
       \uncover<2->{
         \node[mystyle] (LLLcom) at ($(LLL)+(0,-1)$) {};
         \node[mystyle] (LLRcom) at ($(LLR)+(0,-1)$) {};
-        \only<4->{\node[mystyle,inner sep=2pt,fill=yellow] at (LRLcom) {};}
+        \only<4->{\node[mystyle,inner sep=4pt,fill=yellow] at (LRLcom) {};}
         \node[mystyle] (LRLcom) at ($(LRL)+(0,-1)$) {};
         \node[mystyle] (LRRcom) at ($(LRR)+(0,-1)$) {};
         \node[mystyle] (RLLcom) at ($(RLL)+(0,-1)$) {};
