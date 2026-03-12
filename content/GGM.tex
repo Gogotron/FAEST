@@ -1,22 +1,22 @@
 \begin{frame}
   \begin{center}
     \begin{tikzpicture}
-      \tikzset{child/.style={circle,fill=black,inner sep=1pt,outer sep=3pt}}
+      \tikzset{mystyle/.style={circle,fill=black,inner sep=1pt,outer sep=3pt}}
       \node (root) at (0,0) {root};
-      \node[child] (L) at ($(root)+(-2,-1)$) {};
-      \node[child](R) at ($(root)+(+2,-1)$) {};
-      \node[child](LL) at ($(L)+(-1,-1)$) {};
-      \node[child](LR) at ($(L)+(+1,-1)$) {};
-      \node[child](RL) at ($(R)+(-1,-1)$) {};
-      \node[child](RR) at ($(R)+(+1,-1)$) {};
-      \node[child](LLL) at ($(LL)+(-0.5,-1)$) {};
-      \node[child](LLR) at ($(LL)+(+0.5,-1)$) {};
-      \node[child](LRL) at ($(LR)+(-0.5,-1)$) {};
-      \node[child](LRR) at ($(LR)+(+0.5,-1)$) {};
-      \node[child](RLL) at ($(RL)+(-0.5,-1)$) {};
-      \node[child](RLR) at ($(RL)+(+0.5,-1)$) {};
-      \node[child](RRL) at ($(RR)+(-0.5,-1)$) {};
-      \node[child](RRR) at ($(RR)+(+0.5,-1)$) {};
+      \node[mystyle] (L) at ($(root)+(-2,-1)$) {};
+      \node[mystyle](R) at ($(root)+(+2,-1)$) {};
+      \node[mystyle](LL) at ($(L)+(-1,-1)$) {};
+      \node[mystyle](LR) at ($(L)+(+1,-1)$) {};
+      \node[mystyle](RL) at ($(R)+(-1,-1)$) {};
+      \node[mystyle](RR) at ($(R)+(+1,-1)$) {};
+      \node[mystyle](LLL) at ($(LL)+(-0.5,-1)$) {};
+      \node[mystyle](LLR) at ($(LL)+(+0.5,-1)$) {};
+      \node[mystyle](LRL) at ($(LR)+(-0.5,-1)$) {};
+      \node[mystyle](LRR) at ($(LR)+(+0.5,-1)$) {};
+      \node[mystyle](RLL) at ($(RL)+(-0.5,-1)$) {};
+      \node[mystyle](RLR) at ($(RL)+(+0.5,-1)$) {};
+      \node[mystyle](RRL) at ($(RR)+(-0.5,-1)$) {};
+      \node[mystyle](RRR) at ($(RR)+(+0.5,-1)$) {};
       \draw[->] (root) -- (L);
       \draw[->] (root) -- (R);
       \draw[->] (L) -- (LL);
@@ -34,3 +34,42 @@
     \end{tikzpicture}
   \end{center}
 \end{frame}
+
+
+% Alternative way of drawing the tree.
+% \begin{tikzpicture}[
+%   level 1/.style = {
+%     level distance   = 10mm,
+%     sibling distance = 40mm
+%   }, level 2/.style = {
+%     level distance   = 10mm,
+%     sibling distance = 20mm
+%   }, level 3/.style = {
+%     level distance   = 10mm,
+%     sibling distance = 10mm
+%   }
+% ]
+%   \tikzset{nodestyle/.style={circle,fill=black,inner sep=1pt,outer sep=3pt}}
+%   \node {root}
+%     child[->] { node[mystyle] {}
+%       child[->] { node[mystyle] {}
+%         child[->] { node[mystyle] {} }
+%         child[->] { node[mystyle] {} }
+%       }
+%       child[->] { node[mystyle] {}
+%         child[->] { node[mystyle] {} }
+%         child[->] { node[mystyle] {} }
+%       }
+%     }
+%     child[->] { node[mystyle] {}
+%       child[->] { node[mystyle] {}
+%         child[->] { node[mystyle] {} }
+%         child[->] { node[mystyle] {} }
+%       }
+%       child[->] { node[mystyle] {}
+%         child[->] { node[mystyle] {} }
+%         child[->] { node[mystyle] {} }
+%       }
+%     }
+%   ;
+% \end{tikzpicture}
