@@ -27,7 +27,7 @@
         \node[mystyle,fill=blue] (RR) at ($(R)+(+1,-1)$) {};
       }
 
-      % Lead nodes
+      % Leaf nodes
       \only<-2>{
         \node[mystyle] (LLL) at ($(LL)+(-0.5,-1)$) {};
         \node[mystyle] (LLR) at ($(LL)+(+0.5,-1)$) {};
@@ -49,6 +49,7 @@
         \node[mystyle,fill=blue] (RRL) at ($(RR)+(-0.5,-1)$) {};
         \node[mystyle,fill=blue] (RRR) at ($(RR)+(+0.5,-1)$) {};
       }
+      \node[left=0pt of LLL] {Seeds:};
 
       % Tree branches
       \only<-3>{
@@ -85,15 +86,15 @@
       }
       % Commitments
       \uncover<2->{
-        \node[mystyle] (LLLcom) at ($(LLL)+(0,-0.5)$) {};
-        \node[mystyle] (LLRcom) at ($(LLR)+(0,-0.5)$) {};
+        \node[mystyle] (LLLcom) at ($(LLL)+(0,-1)$) {};
+        \node[mystyle] (LLRcom) at ($(LLR)+(0,-1)$) {};
         \only<4->{\node[mystyle,inner sep=2pt,fill=yellow] at (LRLcom) {};}
-        \node[mystyle] (LRLcom) at ($(LRL)+(0,-0.5)$) {};
-        \node[mystyle] (LRRcom) at ($(LRR)+(0,-0.5)$) {};
-        \node[mystyle] (RLLcom) at ($(RLL)+(0,-0.5)$) {};
-        \node[mystyle] (RLRcom) at ($(RLR)+(0,-0.5)$) {};
-        \node[mystyle] (RRLcom) at ($(RRL)+(0,-0.5)$) {};
-        \node[mystyle] (RRRcom) at ($(RRR)+(0,-0.5)$) {};
+        \node[mystyle] (LRLcom) at ($(LRL)+(0,-1)$) {};
+        \node[mystyle] (LRRcom) at ($(LRR)+(0,-1)$) {};
+        \node[mystyle] (RLLcom) at ($(RLL)+(0,-1)$) {};
+        \node[mystyle] (RLRcom) at ($(RLR)+(0,-1)$) {};
+        \node[mystyle] (RRLcom) at ($(RRL)+(0,-1)$) {};
+        \node[mystyle] (RRRcom) at ($(RRR)+(0,-1)$) {};
         \draw[->] (LLL) -- (LLLcom) {};
         \draw[->] (LLR) -- (LLRcom) {};
         \draw[->] (LRL) -- (LRLcom) {};
@@ -102,7 +103,9 @@
         \draw[->] (RLR) -- (RLRcom) {};
         \draw[->] (RRL) -- (RRLcom) {};
         \draw[->] (RRR) -- (RRRcom) {};
-        \node[left = 0pt of LLLcom] {Commitment:};
+        \draw[draw=black] ($(LLLcom)+(-0.125,0.125)$) rectangle ($(RRRcom)+(0.125,-0.125)$);
+        \node[anchor=mid west] (commit) at ($(RRRcom)+(0.125,0)+(0.125,0)$) {$\mathsf{com}$};
+        \draw[->] ($(RRRcom)+(0.125,0)$) -- (commit);
       }
     \end{tikzpicture}
   \end{center}
