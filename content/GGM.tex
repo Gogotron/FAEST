@@ -1,36 +1,109 @@
-\begin{frame}
+\begin{frame}{GGM Tree/Seed Tree/Puncturable PRF}
   \begin{center}
     \begin{tikzpicture}
+      \useasboundingbox (-4,1) rectangle (4,-5);
       \tikzset{mystyle/.style={circle,fill=black,inner sep=1pt,outer sep=3pt}}
+
+      % Root node
       \node (root) at (0,0) {root};
-      \node[mystyle] (L) at ($(root)+(-2,-1)$) {};
-      \node[mystyle](R) at ($(root)+(+2,-1)$) {};
-      \node[mystyle](LL) at ($(L)+(-1,-1)$) {};
-      \node[mystyle](LR) at ($(L)+(+1,-1)$) {};
-      \node[mystyle](RL) at ($(R)+(-1,-1)$) {};
-      \node[mystyle](RR) at ($(R)+(+1,-1)$) {};
-      \node[mystyle](LLL) at ($(LL)+(-0.5,-1)$) {};
-      \node[mystyle](LLR) at ($(LL)+(+0.5,-1)$) {};
-      \node[mystyle](LRL) at ($(LR)+(-0.5,-1)$) {};
-      \node[mystyle](LRR) at ($(LR)+(+0.5,-1)$) {};
-      \node[mystyle](RLL) at ($(RL)+(-0.5,-1)$) {};
-      \node[mystyle](RLR) at ($(RL)+(+0.5,-1)$) {};
-      \node[mystyle](RRL) at ($(RR)+(-0.5,-1)$) {};
-      \node[mystyle](RRR) at ($(RR)+(+0.5,-1)$) {};
-      \draw[->] (root) -- (L);
-      \draw[->] (root) -- (R);
-      \draw[->] (L) -- (LL);
-      \draw[->] (L) -- (LR);
-      \draw[->] (R) -- (RL);
-      \draw[->] (R) -- (RR);
-      \draw[->] (LL) -- (LLL);
-      \draw[->] (LL) -- (LLR);
-      \draw[->] (LR) -- (LRL);
-      \draw[->] (LR) -- (LRR);
-      \draw[->] (RL) -- (RLL);
-      \draw[->] (RL) -- (RLR);
-      \draw[->] (RR) -- (RRL);
-      \draw[->] (RR) -- (RRR);
+
+      % Intermediate nodes
+      \only<-3>{
+        \node[mystyle] (L) at ($(root)+(-2,-1)$) {};
+        \node[mystyle] (R) at ($(root)+(+2,-1)$) {};
+        \node[mystyle] (LL) at ($(L)+(-1,-1)$) {};
+        \node[mystyle] (LR) at ($(L)+(+1,-1)$) {};
+        \node[mystyle] (RL) at ($(R)+(-1,-1)$) {};
+        \node[mystyle] (RR) at ($(R)+(+1,-1)$) {};
+      }
+      \only<4->{
+        \node[mystyle          ] (L) at ($(root)+(-2,-1)$) {};
+        \node[mystyle,inner sep=2pt,fill=yellow] at (R) {};
+        \node[mystyle,fill=blue] (R) at ($(root)+(+2,-1)$) {};
+        \node[mystyle,inner sep=2pt,fill=yellow] at (LL) {};
+        \node[mystyle,fill=blue] (LL) at ($(L)+(-1,-1)$) {};
+        \node[mystyle          ] (LR) at ($(L)+(+1,-1)$) {};
+        \node[mystyle,fill=blue] (RL) at ($(R)+(-1,-1)$) {};
+        \node[mystyle,fill=blue] (RR) at ($(R)+(+1,-1)$) {};
+      }
+
+      % Lead nodes
+      \only<-2>{
+        \node[mystyle] (LLL) at ($(LL)+(-0.5,-1)$) {};
+        \node[mystyle] (LLR) at ($(LL)+(+0.5,-1)$) {};
+        \node[mystyle] (LRL) at ($(LR)+(-0.5,-1)$) {};
+        \node[mystyle] (LRR) at ($(LR)+(+0.5,-1)$) {};
+        \node[mystyle] (RLL) at ($(RL)+(-0.5,-1)$) {};
+        \node[mystyle] (RLR) at ($(RL)+(+0.5,-1)$) {};
+        \node[mystyle] (RRL) at ($(RR)+(-0.5,-1)$) {};
+        \node[mystyle] (RRR) at ($(RR)+(+0.5,-1)$) {};
+      }
+      \only<3->{
+        \node[mystyle,fill=blue] (LLL) at ($(LL)+(-0.5,-1)$) {};
+        \node[mystyle,fill=blue] (LLR) at ($(LL)+(+0.5,-1)$) {};
+        \node[mystyle,fill=red ] (LRL) at ($(LR)+(-0.5,-1)$) {};
+        \only<4->{\node[mystyle,inner sep=2pt,fill=yellow] at (LRR) {};}
+        \node[mystyle,fill=blue] (LRR) at ($(LR)+(+0.5,-1)$) {};
+        \node[mystyle,fill=blue] (RLL) at ($(RL)+(-0.5,-1)$) {};
+        \node[mystyle,fill=blue] (RLR) at ($(RL)+(+0.5,-1)$) {};
+        \node[mystyle,fill=blue] (RRL) at ($(RR)+(-0.5,-1)$) {};
+        \node[mystyle,fill=blue] (RRR) at ($(RR)+(+0.5,-1)$) {};
+      }
+
+      % Tree branches
+      \only<-3>{
+        \draw[->] (root) -- (L);
+        \draw[->] (root) -- (R);
+        \draw[->] (L) -- (LL);
+        \draw[->] (L) -- (LR);
+        \draw[->] (R) -- (RL);
+        \draw[->] (R) -- (RR);
+        \draw[->] (LL) -- (LLL);
+        \draw[->] (LL) -- (LLR);
+        \draw[->] (LR) -- (LRL);
+        \draw[->] (LR) -- (LRR);
+        \draw[->] (RL) -- (RLL);
+        \draw[->] (RL) -- (RLR);
+        \draw[->] (RR) -- (RRL);
+        \draw[->] (RR) -- (RRR);
+      }
+      \only<4->{
+        \draw[->] (root) -- (L);
+        \draw[->] (root) -- (R);
+        \draw[->] (L) -- (LL);
+        \draw[->] (L) -- (LR);
+        \draw[->,color=blue] (R) -- (RL);
+        \draw[->,color=blue] (R) -- (RR);
+        \draw[->,color=blue] (LL) -- (LLL);
+        \draw[->,color=blue] (LL) -- (LLR);
+        \draw[->] (LR) -- (LRL);
+        \draw[->] (LR) -- (LRR);
+        \draw[->,color=blue] (RL) -- (RLL);
+        \draw[->,color=blue] (RL) -- (RLR);
+        \draw[->,color=blue] (RR) -- (RRL);
+        \draw[->,color=blue] (RR) -- (RRR);
+      }
+      % Commitments
+      \uncover<2->{
+        \node[mystyle] (LLLcom) at ($(LLL)+(0,-0.5)$) {};
+        \node[mystyle] (LLRcom) at ($(LLR)+(0,-0.5)$) {};
+        \only<4->{\node[mystyle,inner sep=2pt,fill=yellow] at (LRLcom) {};}
+        \node[mystyle] (LRLcom) at ($(LRL)+(0,-0.5)$) {};
+        \node[mystyle] (LRRcom) at ($(LRR)+(0,-0.5)$) {};
+        \node[mystyle] (RLLcom) at ($(RLL)+(0,-0.5)$) {};
+        \node[mystyle] (RLRcom) at ($(RLR)+(0,-0.5)$) {};
+        \node[mystyle] (RRLcom) at ($(RRL)+(0,-0.5)$) {};
+        \node[mystyle] (RRRcom) at ($(RRR)+(0,-0.5)$) {};
+        \draw[->] (LLL) -- (LLLcom) {};
+        \draw[->] (LLR) -- (LLRcom) {};
+        \draw[->] (LRL) -- (LRLcom) {};
+        \draw[->] (LRR) -- (LRRcom) {};
+        \draw[->] (RLL) -- (RLLcom) {};
+        \draw[->] (RLR) -- (RLRcom) {};
+        \draw[->] (RRL) -- (RRLcom) {};
+        \draw[->] (RRR) -- (RRRcom) {};
+        \node[left = 0pt of LLLcom] {Commitment:};
+      }
     \end{tikzpicture}
   \end{center}
 \end{frame}
