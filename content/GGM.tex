@@ -1,0 +1,36 @@
+\begin{frame}
+  \begin{center}
+    \begin{tikzpicture}
+      \tikzset{child/.style={circle,fill=black,inner sep=1pt,outer sep=3pt}}
+      \node (root) at (0,0) {root};
+      \node[child] (L) at ($(root)+(-2,-1)$) {};
+      \node[child](R) at ($(root)+(+2,-1)$) {};
+      \node[child](LL) at ($(L)+(-1,-1)$) {};
+      \node[child](LR) at ($(L)+(+1,-1)$) {};
+      \node[child](RL) at ($(R)+(-1,-1)$) {};
+      \node[child](RR) at ($(R)+(+1,-1)$) {};
+      \node[child](LLL) at ($(LL)+(-0.5,-1)$) {};
+      \node[child](LLR) at ($(LL)+(+0.5,-1)$) {};
+      \node[child](LRL) at ($(LR)+(-0.5,-1)$) {};
+      \node[child](LRR) at ($(LR)+(+0.5,-1)$) {};
+      \node[child](RLL) at ($(RL)+(-0.5,-1)$) {};
+      \node[child](RLR) at ($(RL)+(+0.5,-1)$) {};
+      \node[child](RRL) at ($(RR)+(-0.5,-1)$) {};
+      \node[child](RRR) at ($(RR)+(+0.5,-1)$) {};
+      \draw[->] (root) -- (L);
+      \draw[->] (root) -- (R);
+      \draw[->] (L) -- (LL);
+      \draw[->] (L) -- (LR);
+      \draw[->] (R) -- (RL);
+      \draw[->] (R) -- (RR);
+      \draw[->] (LL) -- (LLL);
+      \draw[->] (LL) -- (LLR);
+      \draw[->] (LR) -- (LRL);
+      \draw[->] (LR) -- (LRR);
+      \draw[->] (RL) -- (RLL);
+      \draw[->] (RL) -- (RLR);
+      \draw[->] (RR) -- (RRL);
+      \draw[->] (RR) -- (RRR);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
