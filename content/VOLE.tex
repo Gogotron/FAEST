@@ -1,0 +1,30 @@
+\begin{frame}{Vector Oblivious Linear Evaluation (VOLE)}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[rounded corners,fill=gray!20,thick] (-1.5,1) rectangle (1.5,-1);
+      \node at (0,0) {\only<2->{\only<3->{\$-}V}OLE};
+      \node at (-4,1.5) {Sender};
+      \node at (4,1.5) {Receiver};
+
+      \only<-2>{\draw[->,thick] (-3.5,0) -- node[pos=0.5,above,font=\footnotesize] {$u,v$} (-1.5,0);}
+      \only<3->{\draw[<-,thick] (-3.5,0) -- node[pos=0.5,above,font=\footnotesize] {$u,v$} (-1.5,0);}
+
+      \draw[->,thick] (3.5,0.5) -- node[pos=0.5,above,font=\footnotesize] {$\Delta$} (1.5,0.5);
+
+      \draw[->,thick] (1.5,-0.5) -- node[pos=0.5,below,font=\footnotesize] (q) {$q\vphantom{=u\Delta+v}$} (3.5,-0.5);
+      \node[right=3pt of q.base,anchor=base west] {$=u\Delta+v$};
+    \end{tikzpicture}
+    \begin{overprint}
+      \onslide<-1>
+        $$\setlength{\arraycolsep}{1pt}\begin{array}{lcl}
+          u&\in&\mathbb{F}_2\\
+          v, \Delta, q&\in&\mathbb{F}_{2^n}
+        \end{array}$$
+      \onslide<2->
+        $$\setlength{\arraycolsep}{1pt}\begin{array}{lcl}
+          u&\in&\mathbb{F}_2^l\\
+          v, \Delta, q&\in&\mathbb{F}_{2^n}^l
+        \end{array}$$
+    \end{overprint}
+  \end{center}
+\end{frame}
