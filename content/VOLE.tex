@@ -45,37 +45,39 @@
       \item Sender: polynomial $P\in \mathbb{F}_{2^\lambda}[X]_{\scriptscriptstyle\leqslant d}$ with leading term $u\in \mathbb{F}_{2^e}$ 
       \item Receiver: $q=P(\Delta)\in \mathbb{F}_{2^\lambda}$
     \end{itemize}
+    In general $d=1$ and $e=1$.
   \end{block}
 \end{frame}
 
 \begin{frame}{Manipulating VOLE commitments}
   \begin{center}
-    $$a,b\in \mathbb{F}_{2^e},\qquad C\in \mathbb{F}_{2^{e{\cdot}n}},\mathsf{cst}\in \mathbb{F}_{2^\lambda}$$
+    \vspace{-1em}
+    $$a,b\in \mathbb{F}_{2^e},\qquad C\in \mathbb{F}_{2^{e'}},e'{=}e{\cdot}n$$
     \setlength{\tabcolsep}{10pt}
-    \renewcommand{\arraystretch}{1.5}
+    \renewcommand{\arraystretch}{1.6}
     \begin{tabular}{|c|c|c|}
       \cline{2-3}
       \multicolumn{1}{c|}{} &
       Sender & Receiver \\
       \hline
-      $\left<a+b\right>^d$ &
-      \multicolumn{2}{|c|}{$\left<a\right>^d+\left<b\right>^d$} \\
+      $\left<a+b\right>_e^d$ &
+      \multicolumn{2}{|c|}{$\left<a\right>_e^d+\left<b\right>_e^d$} \\
       \hline
-      $\left<a{\cdot}C\right>_{e{\cdot}n}^{d}$ &
+      $\left<a{\cdot}C\right>_{e'}^{d}$ &
       \multicolumn{2}{|c|}{$\left<a\right>_e^d{\cdot}C$} \\
       \hline
       $\left<\mathsf{cst}\right>^0$ &
-      \multicolumn{2}{|c|}{$\mathsf{cst}$} \\
+      \multicolumn{2}{|c|}{$C$} \\
       \hline
       $\left<a\right>^{d+1}$ &
       $\left<a\right>^dX$ & $\left<a\right>^d\Delta$ \\
       \hline
-      $\left<ab\right>^{d_1+d_2}$ &
-      \multicolumn{2}{|c|}{$\left<a\right>^{d_1}\left<b\right>^{d_2}$} \\
+      $\left<a{\cdot}b\right>_e^{d_1+d_2}$ &
+      \multicolumn{2}{|c|}{$\left<a\right>_e^{d_1}{\cdot}\left<b\right>_e^{d_2}$} \\
       \hline
     \end{tabular}
     \begin{block}{Remark}
-      We can compute affine functions of commitments, and we can lift commitments from $\mathbb{F}_{2^e}^{n}$ to $\mathbb{F}_{2^{e{\cdot}n}}$.
+      We can compute affine functions of commitments, and we can lift commitments from $\mathbb{F}_{2^e}^{n}$ to $\mathbb{F}_{2^{e'}}$.
     \end{block}
   \end{center}
 \end{frame}
