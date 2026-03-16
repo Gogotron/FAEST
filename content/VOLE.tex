@@ -28,3 +28,22 @@
     \end{overprint}
   \end{center}
 \end{frame}
+
+
+\begin{frame}{VOLE as commitments}
+  In a VOLE, we may consider the parties hold:
+  \begin{itemize}
+    \item Sender: a polynomial $P(X)=uX+v$ \uncover<2->{\hfill $\leftarrow$ special case of degree 1}
+    \item Receiver: an evaluation point $q:=P(\Delta)$
+  \end{itemize}
+  \pause
+  \pause
+  \vspace{1em}
+  \begin{block}{Notation}
+    $\left<u\right>_e^d$ represents:
+    \begin{itemize}
+      \item Sender: polynomial $P\in \mathbb{F}_{2^\lambda}[X]_{\scriptscriptstyle\leqslant d}$ with leading term $u\in \mathbb{F}_{2^e}$ 
+      \item Receiver: $q=P(\Delta)\in \mathbb{F}_{2^\lambda}$
+    \end{itemize}
+  \end{block}
+\end{frame}
