@@ -1,0 +1,24 @@
+\begin{frame}{Proving circuits}
+  \begin{itemize}
+    \item Prove affine constraints \\
+      This is free by linearity of VOLE commitments.
+    \item Prove quadratic constraints \\
+      More complicated
+  \end{itemize}
+  $$\left<a\right>^1\cdot\left<b\right>^1=\left<ab\right>^2$$
+  Prover holds a product of polynomials, verifier holds a product of evaluations at $\Delta$.
+  \begin{alertblock}{Warning}
+    We know how to construct VOLE, but not VOPE.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{How do we prove products?}
+  When $a\cdot b=c$, how do we prove that $\left<ab\right>^2$ is a commitment to the same value as $\left<c\right>^1$? \\
+  \pause
+  \begin{itemize}
+    \item $\left<c\right>^1\rightarrow\left<c\right>^2$, multiplying by $X$ or $\Delta$
+    \item Compute $\left<ab\right>^2-\left<c\right>^2$
+    \item Prover reveals masked coefficients of the polynomial
+    \item Verifier checks evaluation at $\Delta$ and leading coefficient.
+  \end{itemize}
+\end{frame}
