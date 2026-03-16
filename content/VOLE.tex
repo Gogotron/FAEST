@@ -49,8 +49,8 @@
 \end{frame}
 
 \begin{frame}{Manipulating VOLE commitments}
-  $$a,b\in \mathbb{F}_{2^e},\qquad C\in \mathbb{F}_{2^{e{\cdot}n}},\mathsf{cst}\in \mathbb{F}_{2^\lambda}$$
   \begin{center}
+    $$a,b\in \mathbb{F}_{2^e},\qquad C\in \mathbb{F}_{2^{e{\cdot}n}},\mathsf{cst}\in \mathbb{F}_{2^\lambda}$$
     \setlength{\tabcolsep}{10pt}
     \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|c|c|c|}
@@ -70,9 +70,12 @@
       $\left<a\right>^{d+1}$ &
       $\left<a\right>^dX$ & $\left<a\right>^d\Delta$ \\
       \hline
+      $\left<ab\right>^{d_1+d_2}$ &
+      \multicolumn{2}{|c|}{$\left<a\right>^{d_1}\left<b\right>^{d_2}$} \\
+      \hline
     \end{tabular}
+    \begin{block}{Remark}
+      We can compute affine functions of commitments, and we can lift commitments from $\mathbb{F}_{2^e}^{n}$ to $\mathbb{F}_{2^{e{\cdot}n}}$.
+    \end{block}
   \end{center}
-  \begin{block}{Note}
-    We can compute affine functions of commitments, and we can lift commitments from $\mathbb{F}_{2^e}^{n}$ to $\mathbb{F}_{2^{e{\cdot}n}}$.
-  \end{block}
 \end{frame}
