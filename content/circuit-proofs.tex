@@ -59,7 +59,8 @@
         \pause
         \item Prove additive gates (free)
         \pause
-        \item Prove multiplicative gates (complicated)
+        \item Prove multiplicative gates (complicated) \\
+          Multiplication raises degree
       \end{itemize}
     \end{column}%
   \end{columns}
@@ -67,12 +68,14 @@
 
 
 \begin{frame}{How do we prove products?}
-  When $a\cdot b=c$, how do we prove that $\left<ab\right>^2$ is a commitment to the same value as $\left<c\right>^1$? \\
+  How do we prove that $a\cdot b=c$ from $\left<a\right>^1,\left<b\right>^1,\left<c\right>^1$?
   \pause
   \begin{itemize}
-    \item $\left<c\right>^1\rightarrow\left<c\right>^2$, multiplying by $X$ or $\Delta$
-    \item Compute $\left<ab\right>^2-\left<c\right>^2$
-    \item Prover reveals masked coefficients of the polynomial
+    \item Compute $\left<a{\cdot}b-c\right>^2=\left<a\right>^1{\cdot}\left<b\right>^1-\left<c\right>^2$, \\
+      should be commitment to 0.
+    \pause
+    \item Prover reveals masked coefficients of the polynomial.
+    \pause
     \item Verifier checks evaluation at $\Delta$ and leading coefficient.
   \end{itemize}
 \end{frame}
