@@ -1,16 +1,70 @@
-\begin{frame}{Proving circuits}
-  \begin{itemize}
-    \item Prove affine constraints \\
-      This is free by linearity of VOLE commitments.
-    \item Prove quadratic constraints \\
-      More complicated
-  \end{itemize}
-  $$\left<a\right>^1\cdot\left<b\right>^1=\left<ab\right>^2$$
-  Prover holds a product of polynomials, verifier holds a product of evaluations at $\Delta$.
-  \begin{alertblock}{Warning}
-    We know how to construct VOLE, but not VOPE.
-  \end{alertblock}
+\begin{frame}{QuickSilver proof system}
+  $$\mathsf{sk}={k}\quad\mathsf{pk}=(x,y)\quad\mathsf{OWF}_k(x)=y$$
+  \pause
+  A $\mathsf{OWF}$ can be represented as a circuit of gates
+  \begin{columns}[c] % align columns
+    \begin{column}{.35\textwidth}
+      \begin{center}
+        \begin{tikzpicture}[
+          level 1/.style = {
+            level distance   = 7mm,
+          }, level 2/.style = {
+            level distance   = 7mm,
+            sibling distance = 20mm
+          }, level 3/.style = {
+            level distance   = 7mm,
+            sibling distance = 10mm
+          }, level 4/.style = {
+            level distance   = 10mm,
+            sibling distance = 5mm
+          },
+          grow = up,
+          operation/.style={circle,draw=black,inner sep=1pt,outer sep=0pt},
+          input-output/.style={circle,draw=none,inner sep=1pt,outer sep=0pt},
+        ]
+          \node[input-output] {$y$}
+            child[<-] { node[operation] {$+$}
+              child[<-] { node[operation] {$\times$}
+                child[<-] { node[operation] {$+$}
+                  child[<-] { node[input-output] {$x_3$} }
+                  child[<-] { node[input-output] {$k_3$} }
+                }
+                child[<-] { node[operation] {$+$}
+                  child[<-] { node[input-output] {$x_2$} }
+                  child[<-] { node[input-output] {$k_2$} }
+                }
+              }
+              child[<-] { node[operation] {$\times$}
+                child[<-] { node[operation] {$+$}
+                  child[<-] { node[input-output] {$x_1$} }
+                  child[<-] { node[input-output] {$k_1$} }
+                }
+                child[<-] { node[operation] {$+$}
+                  child[<-] { node[input-output] {$x_0$} }
+                  child[<-] { node[input-output] {$k_0$} }
+                }
+              }
+            }
+          ;
+        \end{tikzpicture}
+      \end{center}
+    \end{column}%
+    \hfill%
+    \begin{column}{.65\textwidth}
+      \pause
+      To prove knowledge of $x$:
+      \begin{itemize}
+        \pause
+        \item Commit to wire values (use VOLE)
+        \pause
+        \item Prove additive gates (free)
+        \pause
+        \item Prove multiplicative gates (complicated)
+      \end{itemize}
+    \end{column}%
+  \end{columns}
 \end{frame}
+
 
 \begin{frame}{How do we prove products?}
   When $a\cdot b=c$, how do we prove that $\left<ab\right>^2$ is a commitment to the same value as $\left<c\right>^1$? \\
