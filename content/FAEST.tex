@@ -1,0 +1,92 @@
+\begin{frame}{FAEST specifics}
+  \begin{center}
+    \begin{tikzpicture}[
+      scale=0.5,
+      XOR/.style = { % Custom TikZ addon
+        thick,
+        draw,
+        circle,
+        append after command={
+          [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
+          (\tikzlastnode.north) edge[thick] (\tikzlastnode.south)
+          (\tikzlastnode.east) edge[thick] (\tikzlastnode.west)
+        },
+      },
+      arrow/.style = {
+        -{Latex[length=1mm,width=1mm]},
+      },
+      var/.style = {
+        circle,
+        inner sep=0pt,
+        font=\footnotesize,
+      },
+      round/.style = {
+        rectangle,
+        draw=black,
+        font=\tiny,
+        inner sep=1.5pt,
+      }, 
+      Dotted/.style={% https://tex.stackexchange.com/a/52856/194703
+        dash pattern=on 0.1\pgflinewidth off 2\pgflinewidth,
+        line cap=round,
+        shorten >=3,
+        shorten <=3,
+        ultra thick,
+      },
+      Dotted/.default=3,
+    ]
+      \draw[step=1cm,gray!30,very thin] (-5,0) grid (5,-10);
+
+      \node[var] (x) at (0,0) {$x$};
+
+      \node[XOR,inner sep=2pt] (xor0) at ($(x)+(0,-1)$) {};
+      \node[var] (k0) at ($(xor0)+(-1,0)$) {$k_0$};
+
+      \node[round] (r1) at ($(xor0)+(0,-1)$) {$\mathsf{Round}_1$};
+
+      \node[XOR,inner sep=2pt] (xor1) at ($(r1)+(0,-1)$) {};
+      \node[var] (k1) at ($(xor1)+(-1,0)$) {$k_1$};
+
+      \coordinate (aux1) at ($(xor1)+(0,-0.5)$);
+      \coordinate (aux2) at ($(aux1)+(0,-1)$);
+
+      \node[XOR,inner sep=2pt] (xor9) at ($(aux2)+(0,-0.5)$) {};
+      \node[var] (k9) at ($(xor9)+(-1,0)$) {$k_9$};
+
+      \node[round] (r10) at ($(xor9)+(0,-1)$) {$\mathsf{Round}_{10}$};
+
+      \node[XOR,inner sep=2pt] (xor10) at ($(r10)+(0,-1)$) {};
+      \node[var] (k10) at ($(xor10)+(-1,0)$) {$k_{10}$};
+
+      \node[var] (y) at ($(xor10)+(0,-1)$) {$y$};
+
+      \node[round] (keyexp) at ($(k0)+(-1,1)$) {$\mathsf{KeyExpansion}$};
+
+      \node[var] (k) at ($(keyexp)+(0,1)$) {$k$};
+
+      \draw[arrow] (x) -- (xor0);
+      \draw[arrow] (k0) -- (xor0);
+      \draw[arrow] ($(k0)+(-1,0)$) -- (k0);
+      \draw[arrow] (xor0) -- (r1);
+      \draw[arrow] (r1) -- (xor1);
+      \draw[arrow] (k1) -- (xor1);
+      \draw[arrow] ($(k1)+(-1,0)$) -- (k1);
+      \draw[arrow] (xor1) -- (aux1);
+
+      \draw[Dotted] (aux1) -- (aux2);
+
+      \draw[arrow] (aux2) -- (xor9);
+      \draw[arrow] (k9) -- (xor9);
+      \draw[arrow] ($(k9)+(-1,0)$) -- (k9);
+      \draw[arrow] (xor9) -- (r10);
+      \draw[arrow] (r10) -- (xor10);
+      \draw[arrow] (k10) -- (xor10);
+      \draw[arrow] ($(k10)+(-1,0)$) -- (k10);
+      \draw[arrow] (xor10) -- (y);
+
+      \draw (keyexp) -- ($(k10)+(-1,0)$);
+
+      \draw[arrow] (k) -- (keyexp);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
