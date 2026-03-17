@@ -1,0 +1,22 @@
+\begin{frame}{AES}
+  $\mathsf{AES}$ is a Substitution Permutation Network \\
+  \begin{enumerate}
+    \item $\texttt{KeyExpansion}$
+    \item 10-14 rounds, in each round:
+      \begin{enumerate}
+        \item $\texttt{SubBytes}$, quadratic operation $x\mapsto x^{-1}$ (and $0\mapsto 0$)
+        \item $\texttt{ShiftRows}$, $\texttt{MixColumns}$, $\texttt{AddRoundKey}$, linear operations
+      \end{enumerate}
+  \end{enumerate}
+  \pause
+  \ \\\ \\
+  Linear gates are free, all we need to prove are the $\texttt{SubBytes}$ inversions in each round and in the key expansion.
+  \\\ \\
+  \pause
+  To prove that $y=x^{-1}$ or $x=y=0$, \\
+  we prove that $x(xy-1)=0$ and $y(xy-1)=0$.
+  \pause
+  \\\ \\\ \\
+  \vfill
+  \scriptsize FAESTv2: Field norms and Galois conjugates for shorter signature
+\end{frame}
