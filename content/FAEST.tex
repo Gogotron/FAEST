@@ -25,13 +25,16 @@
         draw=black,
         font=\tiny,
         inner sep=1.5pt,
+        rounded corners=1.5pt,
+        fill=gray!30!cyan!50,
+        minimum width=1cm,
       }, 
       Dotted/.style={% https://tex.stackexchange.com/a/52856/194703
         dash pattern=on 0.1\pgflinewidth off 2\pgflinewidth,
         line cap=round,
         shorten >=3,
         shorten <=3,
-        ultra thick,
+        thick,
       },
       Dotted/.default=3,
     ]
@@ -47,10 +50,20 @@
       \node[XOR,inner sep=2pt] (xor1) at ($(r1)+(0,-1)$) {};
       \node[var] (k1) at ($(xor1)+(-1,0)$) {$k_1$};
 
-      \coordinate (aux1) at ($(xor1)+(0,-0.5)$);
-      \coordinate (aux2) at ($(aux1)+(0,-1)$);
+      \node[round] (r2) at ($(xor1)+(0,-1)$) {$\mathsf{Round}_2$};
 
-      \node[XOR,inner sep=2pt] (xor9) at ($(aux2)+(0,-0.5)$) {};
+      \node[XOR,inner sep=2pt] (xor2) at ($(r2)+(0,-1)$) {};
+      \node[var] (k2) at ($(xor2)+(-1,0)$) {$k_2$};
+
+      \coordinate (aux1) at ($(xor2)+(0,-0.5)$);
+      \coordinate (aux2) at ($(aux1)+(0,-0.75)$);
+
+      \node[XOR,inner sep=2pt] (xor8) at ($(aux2)+(0,-0.75)$) {};
+      \node[var] (k8) at ($(xor8)+(-1,0)$) {$k_8$};
+
+      \node[round] (r9) at ($(xor8)+(0,-1)$) {$\mathsf{Round}_{9}$};
+
+      \node[XOR,inner sep=2pt] (xor9) at ($(r9)+(0,-1)$) {};
       \node[var] (k9) at ($(xor9)+(-1,0)$) {$k_9$};
 
       \node[round] (r10) at ($(xor9)+(0,-1)$) {$\mathsf{Round}_{10}$};
@@ -62,23 +75,35 @@
 
       \node[round] (keyexp) at ($(k0)+(-1,1)$) {$\mathsf{KeyExpansion}$};
 
-      \node[var] (k) at ($(keyexp)+(0,1)$) {$k$};
+      \node[var] (k) at ($(keyexp)+(0,1.25)$) {$k$};
 
       \draw[arrow] (x) -- (xor0);
       \draw[arrow] (k0) -- (xor0);
       \draw[arrow] ($(k0)+(-1,0)$) -- (k0);
       \draw[arrow] (xor0) -- (r1);
+
       \draw[arrow] (r1) -- (xor1);
       \draw[arrow] (k1) -- (xor1);
       \draw[arrow] ($(k1)+(-1,0)$) -- (k1);
-      \draw[arrow] (xor1) -- (aux1);
+      \draw[arrow] (xor1) -- (r2);
+
+      \draw[arrow] (r2) -- (xor2);
+      \draw[arrow] (k2) -- (xor2);
+      \draw[arrow] ($(k2)+(-1,0)$) -- (k2);
+      \draw[arrow] (xor2) -- (aux1);
 
       \draw[Dotted] (aux1) -- (aux2);
 
-      \draw[arrow] (aux2) -- (xor9);
+      \draw[arrow] (aux2) -- (xor8);
+      \draw[arrow] (k8) -- (xor8);
+      \draw[arrow] ($(k8)+(-1,0)$) -- (k8);
+      \draw[arrow] (xor8) -- (r9);
+
+      \draw[arrow] (r9) -- (xor9);
       \draw[arrow] (k9) -- (xor9);
       \draw[arrow] ($(k9)+(-1,0)$) -- (k9);
       \draw[arrow] (xor9) -- (r10);
+
       \draw[arrow] (r10) -- (xor10);
       \draw[arrow] (k10) -- (xor10);
       \draw[arrow] ($(k10)+(-1,0)$) -- (k10);
