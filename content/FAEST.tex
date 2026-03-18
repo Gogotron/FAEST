@@ -63,9 +63,9 @@
           ]
             \useasboundingbox (-3.5,1.5) rectangle (3.5,-12.25);
 
-            \node[var] (x) at (0,0) {$x$};
+            \node[var] (in) at (0,0) {$\mathsf{in}$};
 
-            \node[XOR,inner sep=2pt] (xor0) at ($(x)+(0,-1)$) {};
+            \node[XOR,inner sep=2pt] (xor0) at ($(in)+(0,-1)$) {};
             \node[var] (k0) at ($(xor0)+(-1,0)$) {$k_0$};
 
             \node[round] (r1) at ($(xor0)+(0,-1)$) {$\mathsf{Round}_1$};
@@ -94,13 +94,13 @@
             \node[XOR,inner sep=2pt] (xor10) at ($(r10)+(0,-1)$) {};
             \node[var] (k10) at ($(xor10)+(-1,0)$) {$k_{10}$};
 
-            \node[var] (y) at ($(xor10)+(0,-1)$) {$y$};
+            \node[var] (out) at ($(xor10)+(0,-1)$) {$\mathsf{out}$};
 
             \node[round] (keyexp) at ($(k0)+(-1,1)$) {$\mathsf{KeyExpansion}$};
 
             \node[var] (k) at ($(keyexp)+(0,1.25)$) {$k$};
 
-            \draw[arrow] (x) -- (xor0);
+            \draw[arrow] (in) -- (xor0);
             \draw[arrow] (k0) -- (xor0);
             \draw[arrow] ($(k0)+(-1,0)$) -- (k0);
             \draw[arrow] (xor0) -- (r1);
@@ -130,7 +130,7 @@
             \draw[arrow] (r10) -- coordinate[pos=0.35] (com10) (xor10);
             \draw[arrow] (k10) -- (xor10);
             \draw[arrow] ($(k10)+(-1,0)$) -- (k10);
-            \draw[arrow] (xor10) -- (y);
+            \draw[arrow] (xor10) -- (out);
 
             \draw[arrow] (k) -- coordinate[pos=0.4] (comk) (keyexp);
 
