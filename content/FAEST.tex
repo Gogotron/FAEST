@@ -242,6 +242,13 @@
             \node[var,blue,above=1pt of subbytes.north east,anchor=south east] {$\left<a\right>^1$};
             \node[var,blue,below=1pt of subbytes.south east,anchor=north east] {$\left<b\right>^1$};
           }
+          \only<8->{
+            \node[var,blue,left=1pt of subbytes.west,anchor=east] {%
+              \begin{tabular}{c}
+                $\left<a(ab-1)\right>^3$\\
+                $\left<b(ab-1)\right>^3$
+              \end{tabular}};
+          }
         \end{tikzpicture}
       }
     \end{column}
