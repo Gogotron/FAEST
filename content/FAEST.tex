@@ -13,7 +13,7 @@
         },
       },
       arrow/.style = {
-        -{Latex[length=1mm,width=1mm]},
+        -{Latex[length=0.7mm,width=0.7mm]},
       },
       var/.style = {
         circle,
@@ -37,8 +37,15 @@
         thick,
       },
       Dotted/.default=3,
+      wire-commitment/.style = {
+        circle,
+        draw=blue,
+        fill=blue,
+        inner sep=0.7pt,
+        outer sep=0pt
+      },
     ]
-      \draw[step=1cm,gray!30,very thin] (-5,0) grid (5,-10);
+      \useasboundingbox (-3.5,1.5) rectangle (3.5,-12.25);
 
       \node[var] (x) at (0,0) {$x$};
 
@@ -82,36 +89,43 @@
       \draw[arrow] ($(k0)+(-1,0)$) -- (k0);
       \draw[arrow] (xor0) -- (r1);
 
-      \draw[arrow] (r1) -- (xor1);
+      \draw[arrow] (r1) -- coordinate[pos=0.35] (com1) (xor1);
       \draw[arrow] (k1) -- (xor1);
       \draw[arrow] ($(k1)+(-1,0)$) -- (k1);
       \draw[arrow] (xor1) -- (r2);
 
-      \draw[arrow] (r2) -- (xor2);
+      \draw[arrow] (r2) -- coordinate[pos=0.35] (com2) (xor2);
       \draw[arrow] (k2) -- (xor2);
       \draw[arrow] ($(k2)+(-1,0)$) -- (k2);
       \draw[arrow] (xor2) -- (aux1);
 
       \draw[Dotted] (aux1) -- (aux2);
 
-      \draw[arrow] (aux2) -- (xor8);
+      \draw[arrow] (aux2) -- coordinate[pos=0.35] (com8) (xor8);
       \draw[arrow] (k8) -- (xor8);
       \draw[arrow] ($(k8)+(-1,0)$) -- (k8);
       \draw[arrow] (xor8) -- (r9);
 
-      \draw[arrow] (r9) -- (xor9);
+      \draw[arrow] (r9) -- coordinate[pos=0.35] (com9) (xor9);
       \draw[arrow] (k9) -- (xor9);
       \draw[arrow] ($(k9)+(-1,0)$) -- (k9);
       \draw[arrow] (xor9) -- (r10);
 
-      \draw[arrow] (r10) -- (xor10);
+      \draw[arrow] (r10) -- coordinate[pos=0.35] (com10) (xor10);
       \draw[arrow] (k10) -- (xor10);
       \draw[arrow] ($(k10)+(-1,0)$) -- (k10);
       \draw[arrow] (xor10) -- (y);
 
-      \draw (keyexp) -- ($(k10)+(-1,0)$);
+      \draw[arrow] (k) -- coordinate[pos=0.4] (comk) (keyexp);
 
-      \draw[arrow] (k) -- (keyexp);
+      \draw (keyexp) -- coordinate[pos=0.5] (come) ($(k0)+(-1,0)$);
+      \draw ($(k0)+(-1,0)$) -- ($(k10)+(-1,0)$);
+
+      \only<2>{
+        \foreach \pos in {k, e, 1, 2, 8, 9, 10} {
+          \node[wire-commitment] at (com\pos) {};
+        }
+      }
     \end{tikzpicture}
   \end{center}
 \end{frame}
