@@ -1,131 +1,249 @@
 \begin{frame}{FAEST specifics}
-  \begin{center}
-    \begin{tikzpicture}[
-      scale=0.5,
-      XOR/.style = { % Custom TikZ addon
-        thick,
-        draw,
-        circle,
-        append after command={
-          [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
-          (\tikzlastnode.north) edge[thick] (\tikzlastnode.south)
-          (\tikzlastnode.east) edge[thick] (\tikzlastnode.west)
-        },
-      },
-      arrow/.style = {
-        -{Latex[length=0.7mm,width=0.7mm]},
-      },
-      var/.style = {
-        circle,
-        inner sep=0pt,
-        font=\footnotesize,
-      },
-      round/.style = {
-        rectangle,
-        draw=black,
-        font=\tiny,
-        inner sep=1.5pt,
-        rounded corners=1.5pt,
-        fill=gray!30!cyan!50,
-        minimum width=1cm,
-      }, 
-      Dotted/.style={% https://tex.stackexchange.com/a/52856/194703
-        dash pattern=on 0.1\pgflinewidth off 2\pgflinewidth,
-        line cap=round,
-        shorten >=3,
-        shorten <=3,
-        thick,
-      },
-      Dotted/.default=3,
-      wire-commitment/.style = {
-        circle,
-        draw=blue,
-        fill=blue,
-        inner sep=0.7pt,
-        outer sep=0pt
-      },
-    ]
-      \useasboundingbox (-3.5,1.5) rectangle (3.5,-12.25);
-
-      \node[var] (x) at (0,0) {$x$};
-
-      \node[XOR,inner sep=2pt] (xor0) at ($(x)+(0,-1)$) {};
-      \node[var] (k0) at ($(xor0)+(-1,0)$) {$k_0$};
-
-      \node[round] (r1) at ($(xor0)+(0,-1)$) {$\mathsf{Round}_1$};
-
-      \node[XOR,inner sep=2pt] (xor1) at ($(r1)+(0,-1)$) {};
-      \node[var] (k1) at ($(xor1)+(-1,0)$) {$k_1$};
-
-      \node[round] (r2) at ($(xor1)+(0,-1)$) {$\mathsf{Round}_2$};
-
-      \node[XOR,inner sep=2pt] (xor2) at ($(r2)+(0,-1)$) {};
-      \node[var] (k2) at ($(xor2)+(-1,0)$) {$k_2$};
-
-      \coordinate (aux1) at ($(xor2)+(0,-0.5)$);
-      \coordinate (aux2) at ($(aux1)+(0,-0.75)$);
-
-      \node[XOR,inner sep=2pt] (xor8) at ($(aux2)+(0,-0.75)$) {};
-      \node[var] (k8) at ($(xor8)+(-1,0)$) {$k_8$};
-
-      \node[round] (r9) at ($(xor8)+(0,-1)$) {$\mathsf{Round}_{9}$};
-
-      \node[XOR,inner sep=2pt] (xor9) at ($(r9)+(0,-1)$) {};
-      \node[var] (k9) at ($(xor9)+(-1,0)$) {$k_9$};
-
-      \node[round] (r10) at ($(xor9)+(0,-1)$) {$\mathsf{Round}_{10}$};
-
-      \node[XOR,inner sep=2pt] (xor10) at ($(r10)+(0,-1)$) {};
-      \node[var] (k10) at ($(xor10)+(-1,0)$) {$k_{10}$};
-
-      \node[var] (y) at ($(xor10)+(0,-1)$) {$y$};
-
-      \node[round] (keyexp) at ($(k0)+(-1,1)$) {$\mathsf{KeyExpansion}$};
-
-      \node[var] (k) at ($(keyexp)+(0,1.25)$) {$k$};
-
-      \draw[arrow] (x) -- (xor0);
-      \draw[arrow] (k0) -- (xor0);
-      \draw[arrow] ($(k0)+(-1,0)$) -- (k0);
-      \draw[arrow] (xor0) -- (r1);
-
-      \draw[arrow] (r1) -- coordinate[pos=0.35] (com1) (xor1);
-      \draw[arrow] (k1) -- (xor1);
-      \draw[arrow] ($(k1)+(-1,0)$) -- (k1);
-      \draw[arrow] (xor1) -- (r2);
-
-      \draw[arrow] (r2) -- coordinate[pos=0.35] (com2) (xor2);
-      \draw[arrow] (k2) -- (xor2);
-      \draw[arrow] ($(k2)+(-1,0)$) -- (k2);
-      \draw[arrow] (xor2) -- (aux1);
-
-      \draw[Dotted] (aux1) -- (aux2);
-
-      \draw[arrow] (aux2) -- coordinate[pos=0.35] (com8) (xor8);
-      \draw[arrow] (k8) -- (xor8);
-      \draw[arrow] ($(k8)+(-1,0)$) -- (k8);
-      \draw[arrow] (xor8) -- (r9);
-
-      \draw[arrow] (r9) -- coordinate[pos=0.35] (com9) (xor9);
-      \draw[arrow] (k9) -- (xor9);
-      \draw[arrow] ($(k9)+(-1,0)$) -- (k9);
-      \draw[arrow] (xor9) -- (r10);
-
-      \draw[arrow] (r10) -- coordinate[pos=0.35] (com10) (xor10);
-      \draw[arrow] (k10) -- (xor10);
-      \draw[arrow] ($(k10)+(-1,0)$) -- (k10);
-      \draw[arrow] (xor10) -- (y);
-
-      \draw[arrow] (k) -- coordinate[pos=0.4] (comk) (keyexp);
-
-      \draw (keyexp) -- coordinate[pos=0.5] (come) ($(k0)+(-1,0)$);
-      \draw ($(k0)+(-1,0)$) -- ($(k10)+(-1,0)$);
-
-      \only<2>{
-        \foreach \pos in {k, e, 1, 2, 8, 9, 10} {
-          \node[wire-commitment] at (com\pos) {};
-        }
+  \begin{columns}[c]
+    \begin{column}{0.65\textwidth}
+      Prove the AES evaluation: \\
+      \uncover<2->{
+        Commit to outputs of non-linear operations \\
       }
-    \end{tikzpicture}
-  \end{center}
+      \uncover<4->{
+        Construct commitments to 0 for multiplicative gates
+      }
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \only<-4>{
+        \begin{tikzpicture}[
+          scale=0.5,
+          XOR/.style = { % Custom TikZ addon
+            thick,
+            draw,
+            circle,
+            append after command={
+              [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
+              (\tikzlastnode.north) edge[thick] (\tikzlastnode.south)
+              (\tikzlastnode.east) edge[thick] (\tikzlastnode.west)
+            },
+          },
+          arrow/.style = {
+            -{Latex[length=0.7mm,width=0.7mm]},
+          },
+          var/.style = {
+            circle,
+            inner sep=0pt,
+            font=\footnotesize,
+          },
+          round/.style = {
+            rectangle,
+            draw=black,
+            font=\tiny,
+            inner sep=1.5pt,
+            rounded corners=1.5pt,
+            fill=gray!30!cyan!50,
+            minimum width=1cm,
+          }, 
+          Dotted/.style={% https://tex.stackexchange.com/a/52856/194703
+            dash pattern=on 0.1\pgflinewidth off 2\pgflinewidth,
+            line cap=round,
+            shorten >=3,
+            shorten <=3,
+            thick,
+          },
+          Dotted/.default=3,
+          wire-commitment/.style = {
+            circle,
+            draw=blue,
+            fill=blue,
+            inner sep=0.7pt,
+            outer sep=0pt
+          },
+        ]
+          \useasboundingbox (-3.5,1.5) rectangle (3.5,-12.25);
+
+          \node[var] (x) at (0,0) {$x$};
+
+          \node[XOR,inner sep=2pt] (xor0) at ($(x)+(0,-1)$) {};
+          \node[var] (k0) at ($(xor0)+(-1,0)$) {$k_0$};
+
+          \node[round] (r1) at ($(xor0)+(0,-1)$) {$\mathsf{Round}_1$};
+
+          \node[XOR,inner sep=2pt] (xor1) at ($(r1)+(0,-1)$) {};
+          \node[var] (k1) at ($(xor1)+(-1,0)$) {$k_1$};
+
+          \node[round] (r2) at ($(xor1)+(0,-1)$) {$\mathsf{Round}_2$};
+
+          \node[XOR,inner sep=2pt] (xor2) at ($(r2)+(0,-1)$) {};
+          \node[var] (k2) at ($(xor2)+(-1,0)$) {$k_2$};
+
+          \coordinate (aux1) at ($(xor2)+(0,-0.5)$);
+          \coordinate (aux2) at ($(aux1)+(0,-0.75)$);
+
+          \node[XOR,inner sep=2pt] (xor8) at ($(aux2)+(0,-0.75)$) {};
+          \node[var] (k8) at ($(xor8)+(-1,0)$) {$k_8$};
+
+          \node[round] (r9) at ($(xor8)+(0,-1)$) {$\mathsf{Round}_{9}$};
+
+          \node[XOR,inner sep=2pt] (xor9) at ($(r9)+(0,-1)$) {};
+          \node[var] (k9) at ($(xor9)+(-1,0)$) {$k_9$};
+
+          \node[round] (r10) at ($(xor9)+(0,-1)$) {$\mathsf{Round}_{10}$};
+
+          \node[XOR,inner sep=2pt] (xor10) at ($(r10)+(0,-1)$) {};
+          \node[var] (k10) at ($(xor10)+(-1,0)$) {$k_{10}$};
+
+          \node[var] (y) at ($(xor10)+(0,-1)$) {$y$};
+
+          \node[round] (keyexp) at ($(k0)+(-1,1)$) {$\mathsf{KeyExpansion}$};
+
+          \node[var] (k) at ($(keyexp)+(0,1.25)$) {$k$};
+
+          \draw[arrow] (x) -- (xor0);
+          \draw[arrow] (k0) -- (xor0);
+          \draw[arrow] ($(k0)+(-1,0)$) -- (k0);
+          \draw[arrow] (xor0) -- (r1);
+
+          \draw[arrow] (r1) -- coordinate[pos=0.35] (com1) (xor1);
+          \draw[arrow] (k1) -- (xor1);
+          \draw[arrow] ($(k1)+(-1,0)$) -- (k1);
+          \draw[arrow] (xor1) -- (r2);
+
+          \draw[arrow] (r2) -- coordinate[pos=0.35] (com2) (xor2);
+          \draw[arrow] (k2) -- (xor2);
+          \draw[arrow] ($(k2)+(-1,0)$) -- (k2);
+          \draw[arrow] (xor2) -- (aux1);
+
+          \draw[Dotted] (aux1) -- (aux2);
+
+          \draw[arrow] (aux2) -- coordinate[pos=0.35] (com8) (xor8);
+          \draw[arrow] (k8) -- (xor8);
+          \draw[arrow] ($(k8)+(-1,0)$) -- (k8);
+          \draw[arrow] (xor8) -- (r9);
+
+          \draw[arrow] (r9) -- coordinate[pos=0.35] (com9) (xor9);
+          \draw[arrow] (k9) -- (xor9);
+          \draw[arrow] ($(k9)+(-1,0)$) -- (k9);
+          \draw[arrow] (xor9) -- (r10);
+
+          \draw[arrow] (r10) -- coordinate[pos=0.35] (com10) (xor10);
+          \draw[arrow] (k10) -- (xor10);
+          \draw[arrow] ($(k10)+(-1,0)$) -- (k10);
+          \draw[arrow] (xor10) -- (y);
+
+          \draw[arrow] (k) -- coordinate[pos=0.4] (comk) (keyexp);
+
+          \draw (keyexp) -- coordinate[pos=0.5] (come) ($(k0)+(-1,0)$);
+          \draw ($(k0)+(-1,0)$) -- ($(k10)+(-1,0)$);
+
+          \only<2->{
+            \foreach \pos in {k, e, 1, 2, 8, 9} {
+              \node[wire-commitment] at (com\pos) {};
+            }
+          }
+          \only<2>{
+            \node[wire-commitment] at (com10) {};
+          }
+          \only<3->{
+            \node[wire-commitment,fill=none,dash pattern=on 0.4pt off 0.3pt] at (com10) {};
+          }
+        \end{tikzpicture}
+      }
+      \only<5->{
+        \begin{tikzpicture}[
+          scale=0.5,
+          XOR/.style = { % Custom TikZ addon
+            thick,
+            draw,
+            circle,
+            append after command={
+              [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
+              (\tikzlastnode.north) edge[thick] (\tikzlastnode.south)
+              (\tikzlastnode.east) edge[thick] (\tikzlastnode.west)
+            },
+          },
+          arrow/.style = {
+            -{Latex[length=1mm,width=1mm]},
+          },
+          var/.style = {
+            rectangle,
+            inner sep=0pt,
+            font=\footnotesize,
+          },
+          round/.style = {
+            rectangle,
+            draw=black,
+            font=\tiny,
+            inner sep=1.5pt,
+            rounded corners=1.5pt,
+            fill=gray!30!cyan!50,
+            minimum width=1.5cm,
+          }, 
+          Dotted/.style={% https://tex.stackexchange.com/a/52856/194703
+            dash pattern=on 0.1\pgflinewidth off 2\pgflinewidth,
+            line cap=round,
+            shorten >=3,
+            shorten <=3,
+            thick,
+          },
+          Dotted/.default=3,
+          wire-commitment/.style = {
+            circle,
+            draw=blue,
+            fill=blue,
+            inner sep=0.7pt,
+            outer sep=0pt
+          },
+          commitment-arrow/.style = {
+            arrow,
+            blue,
+            thick,
+            line cap=round,
+          },
+        ]
+          \useasboundingbox (-3.5,1.5) rectangle (3.5,-12.25);
+          %\draw (-3.5,1.5) rectangle (3.5,-12.25);
+          %\draw[step=1cm,gray!30,very thin]  (-3.5,1.5) grid (3.5,-12.25);
+
+          \node[var] (in) at (0,0) {$\mathsf{state}_i$};
+
+          \node[XOR,inner sep=2pt] (xor) at ($(in)+(0,-2)$) {};
+          \node[var] (k) at ($(xor)+(-2,0)$) {$k_i$};
+
+          \only<5>{
+            \node[round,minimum height=2cm,anchor=north] (round) at ($(xor)+(0,-2)$) {$\mathsf{Round}_{i+1}$};
+
+            \node[var] (out) at (0,-10) {$\mathsf{state}_{i+1}$};
+
+            \draw[arrow] (in) -- (xor);
+            \draw[arrow] (k) -- (xor);
+            \draw[arrow] (xor) -- (round);
+            \draw[arrow] (round) -- (out);
+          }
+          \only<6->{
+            \node[round] (subbytes) at ($(xor)+(0,-2)$) {$\mathsf{SubBytes}$};
+            \node[round] (shiftrows) at ($(subbytes)+(0,-2)$) {$\mathsf{ShiftRows}$};
+            \node[round] (mixcolumns) at ($(shiftrows)+(0,-2)$) {$\mathsf{MixColumns}$};
+
+            \node[var] (out) at (0,-10) {$\mathsf{state}_{i+1}$};
+
+            \draw[arrow] (in) -- (xor);
+            \draw[arrow] (k) -- (xor);
+            \draw[arrow] (xor) -- (subbytes);
+            \draw[arrow] (subbytes) -- (shiftrows);
+            \draw[arrow] (shiftrows) -- (mixcolumns);
+            \draw[arrow] (mixcolumns) -- (out);
+          }
+
+          \node[wire-commitment] at (-1,-2) {};
+          \node[wire-commitment] at (0,-1) {};
+          \node[wire-commitment] at (0,-9) {};
+
+          \only<7->{
+            \draw[commitment-arrow] (2,-0.75) -- (2,-3.5);
+            \draw[commitment-arrow] (2,-9.25) -- (2,-4.5);
+
+            \node[var,blue,above=1pt of subbytes.north east,anchor=south east] {$\left<a\right>^1$};
+            \node[var,blue,below=1pt of subbytes.south east,anchor=north east] {$\left<b\right>^1$};
+          }
+        \end{tikzpicture}
+      }
+    \end{column}
+  \end{columns}
 \end{frame}
