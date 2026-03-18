@@ -1,9 +1,9 @@
 \begin{frame}{QuickSilver proof system}
-  $$\mathsf{sk}={k}\quad\mathsf{pk}=(x,y)\quad\mathsf{OWF}_k(x)=y$$
+  $$\mathsf{sk}={k}\quad\mathsf{pk}=(\mathsf{in},\mathsf{out})\quad\mathsf{OWF}_k(\mathsf{in})=\mathsf{out}$$
   \pause
   A $\mathsf{OWF}$ can be represented as a circuit of gates
   \begin{columns}[c] % align columns
-    \begin{column}{.35\textwidth}
+    \begin{column}{.37\textwidth}
       \begin{center}
         \begin{overprint}
           \onslide<2-3>
@@ -12,19 +12,19 @@
                 level distance   = 7mm,
               }, level 2/.style = {
                 level distance   = 7mm,
-                sibling distance = 20mm
+                sibling distance = 24mm
               }, level 3/.style = {
                 level distance   = 7mm,
-                sibling distance = 10mm
+                sibling distance = 12mm
               }, level 4/.style = {
                 level distance   = 10mm,
-                sibling distance = 5mm
+                sibling distance = 6mm
               },
               grow = up,
               operation/.style={circle,draw=black,inner sep=1pt,outer sep=0pt},
-              input-output/.style={circle,draw=none,inner sep=1pt,outer sep=0pt},
+              input-output/.style={rectangle,draw=none,inner sep=1pt,outer sep=0pt},
             ]
-              \node[input-output] {$y$}
+              \node[input-output] {$\mathsf{out}$}
                 child[<-] {
                   node[operation] {$+$}
                   child[<-] {
@@ -32,7 +32,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_3$}
+                        node[input-output] {$\mathsf{in}_3$}
                       }
                       child[<-] {
                         node[input-output] {$k_3$}
@@ -41,7 +41,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_2$}
+                        node[input-output] {$\mathsf{in}_2$}
                       }
                       child[<-] {
                         node[input-output] {$k_2$}
@@ -52,7 +52,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_1$}
+                        node[input-output] {$\mathsf{in}_1$}
                       }
                       child[<-] {
                         node[input-output] {$k_1$}
@@ -61,7 +61,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_0$}
+                        node[input-output] {$\mathsf{in}_0$}
                       }
                       child[<-] {
                         node[input-output] {$k_0$}
@@ -77,20 +77,20 @@
                 level distance   = 7mm,
               }, level 2/.style = {
                 level distance   = 7mm,
-                sibling distance = 20mm
+                sibling distance = 24mm
               }, level 3/.style = {
                 level distance   = 7mm,
-                sibling distance = 10mm
+                sibling distance = 12mm
               }, level 4/.style = {
                 level distance   = 10mm,
-                sibling distance = 5mm
+                sibling distance = 6mm
               },
               grow = up,
               operation/.style={circle,draw=black,inner sep=1pt,outer sep=0pt},
-              input-output/.style={circle,draw=none,inner sep=1pt,outer sep=0pt},
+              input-output/.style={rectangle,draw=none,inner sep=1pt,outer sep=0pt},
               wire-commitment/.style={circle,draw=blue,fill=blue,inner sep=0.5pt,outer sep=0pt},
             ]
-              \node[input-output] {$y$}
+              \node[input-output] {$\mathsf{out}$}
                 child[<-] {
                   node[operation] {$+$}
                   child[<-] {
@@ -98,7 +98,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_3$}
+                        node[input-output] {$\mathsf{in}_3$}
                         edge from parent node[wire-commitment] {}
                       }
                       child[<-] {
@@ -110,7 +110,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_2$}
+                        node[input-output] {$\mathsf{in}_2$}
                         edge from parent node[wire-commitment] {}
                       }
                       child[<-] {
@@ -126,7 +126,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_1$}
+                        node[input-output] {$\mathsf{in}_1$}
                         edge from parent node[wire-commitment] {}
                       }
                       child[<-] {
@@ -138,7 +138,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_0$}
+                        node[input-output] {$\mathsf{in}_0$}
                         edge from parent node[wire-commitment] {}
                       }
                       child[<-] {
@@ -159,20 +159,20 @@
                 level distance   = 7mm,
               }, level 2/.style = {
                 level distance   = 7mm,
-                sibling distance = 20mm
+                sibling distance = 24mm
               }, level 3/.style = {
                 level distance   = 7mm,
-                sibling distance = 10mm
+                sibling distance = 12mm
               }, level 4/.style = {
                 level distance   = 10mm,
-                sibling distance = 5mm
+                sibling distance = 6mm
               },
               grow = up,
               operation/.style={circle,draw=black,inner sep=1pt,outer sep=0pt},
-              input-output/.style={circle,draw=none,inner sep=1pt,outer sep=0pt},
+              input-output/.style={rectangle,draw=none,inner sep=1pt,outer sep=0pt},
               wire-commitment/.style={circle,draw=blue,fill=blue,inner sep=0.5pt,outer sep=0pt},
             ]
-              \node[input-output] {$y$}
+              \node[input-output] {$\mathsf{out}$}
                 child[<-] {
                   node[operation] {$+$}
                   child[<-] {
@@ -180,8 +180,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_3$}
-                        edge from parent node[wire-commitment] {}
+                        node[input-output] {$\mathsf{in}_3$}
                       }
                       child[<-] {
                         node[input-output] {$k_3$}
@@ -191,8 +190,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_2$}
-                        edge from parent node[wire-commitment] {}
+                        node[input-output] {$\mathsf{in}_2$}
                       }
                       child[<-] {
                         node[input-output] {$k_2$}
@@ -206,8 +204,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_1$}
-                        edge from parent node[wire-commitment] {}
+                        node[input-output] {$\mathsf{in}_1$}
                       }
                       child[<-] {
                         node[input-output] {$k_1$}
@@ -217,8 +214,7 @@
                     child[<-] {
                       node[operation] {$+$}
                       child[<-] {
-                        node[input-output] {$x_0$}
-                        edge from parent node[wire-commitment] {}
+                        node[input-output] {$\mathsf{in}_0$}
                       }
                       child[<-] {
                         node[input-output] {$k_0$}
@@ -234,9 +230,9 @@
       \end{center}
     \end{column}%
     \hfill%
-    \begin{column}{.65\textwidth}
+    \begin{column}{.62\textwidth}
       \pause
-      To prove knowledge of $x$:
+      To prove knowledge of $k$:
       \begin{itemize}
         \pause
         \item Commit to wire values (use VOLE)
