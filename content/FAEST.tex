@@ -262,3 +262,55 @@
   \pause
   Prove $\left<z\right>$ is commitment to 0, revealing masked coefficients of polynomial commitment $0X^3+a_2X^2+a_1X+a_0$
 \end{frame}
+
+
+\begin{frame}{}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thin, draw=gray] (-3,1) grid (3,-7);
+      \useasboundingbox (-3,1) rectangle (3,-7);
+
+      \node[draw] (Alice) at (-2,0) {Prover};
+      \node[draw] (Bob) at (2,0) {Verifier};
+
+      \coordinate (v1) at (0,-1.5);
+      \draw[rounded corners,fill=gray!20,thick] ($(v1)+(-1,0.5)$) rectangle ($(v1)+(1,-0.5)$);
+      \node at (v1) {VOLE};
+      \draw[->,thick] ($(v1)+(-2,0)$) -- node[pos=0.5,above,font=\footnotesize] {$u,v$} ($(v1)+(-1,0)$);
+      \only<1>{
+        \draw[->,thick] ($(v1)+(2,0.25)$) -- node[pos=0.5,above,font=\footnotesize] {$\Delta$} ($(v1)+(1,0.25)$);
+        \draw[->,thick] ($(v1)+(1,-0.25)$) -- node[pos=0.5,below,font=\footnotesize] {$q$} ($(v1)+(2,-0.25)$);
+      }
+
+      \draw[->,thick] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [pos=0.5,above,font=\footnotesize,sloped] {witness commitment $\left<k\right>$};
+      \draw[<-,thick] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [pos=0.5,above,font=\footnotesize,sloped] {amortization challenge $r_i$};
+      \draw[->,thick] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [pos=0.5,above,font=\footnotesize,sloped] {polynomial coefficients $a_i$};
+
+      \node[anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-1.5) {%
+        \begin{tabular}{l}
+          Commit to key, key\\
+          expansion, and\\
+          intermediate states.
+        \end{tabular}%
+      };
+
+      \node[anchor=west,outer sep=0pt,inner sep=-5pt] at (2.5,-5) {%
+        \begin{tabular}{l}
+          Compute $\left<z\right>$\\
+          from $q$ and $r_i$,\\
+          and check against $a_i$.
+        \end{tabular}%
+      };
+
+      \only<2>{
+        \coordinate (v2) at (0,-5.5);
+        \draw[rounded corners,fill=gray!20,thick] ($(v2)+(-1,0.5)$) rectangle ($(v2)+(1,-0.5)$);
+        \node at (v2) {VOLE};
+        \draw[->,thick] ($(v2)+(1,0)$) -- node[pos=0.5,below,font=\footnotesize] {$\Delta,q$} ($(v2)+(2,0)$);
+
+        \node[font=\tiny,below=1pt of v1.south,anchor=north] {Part 1};
+        \node[font=\tiny,below=1pt of v2.south,anchor=north] {Part 2};
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
