@@ -2,15 +2,18 @@
   \begin{columns}[c]
     \begin{column}{0.65\textwidth}
       Prove the AES evaluation: \\
-      \uncover<2->{
-        Commit to outputs of non-linear operations \\
-      }
-      \uncover<4->{
-        Construct commitments to 0 for multiplicative gates
-      }
+      \begin{itemize}
+        \uncover<2->{%
+          \item Commit to outputs of non-linear operations
+        }\uncover<4->{%
+          \item Linear operations on commitments to get input and output of multiplicative gates
+        }\uncover<8->{%
+          \item Compute multiplicative constraints of degree 3
+        }
+      \end{itemize}
     \end{column}
     \begin{column}{0.35\textwidth}
-      \only<-4>{
+      \only<-3>{
         \begin{tikzpicture}[
           scale=0.5,
           XOR/.style = { % Custom TikZ addon
@@ -145,7 +148,7 @@
           }
         \end{tikzpicture}
       }
-      \only<5->{
+      \only<4->{
         \begin{tikzpicture}[
           scale=0.5,
           XOR/.style = { % Custom TikZ addon
@@ -206,7 +209,7 @@
           \node[XOR,inner sep=2pt] (xor) at ($(in)+(0,-2)$) {};
           \node[var] (k) at ($(xor)+(-2,0)$) {$k_i$};
 
-          \only<5>{
+          \only<4>{
             \node[round,minimum height=2cm,anchor=north] (round) at ($(xor)+(0,-2)$) {$\mathsf{Round}_{i+1}$};
 
             \node[var] (out) at (0,-10) {$\mathsf{state}_{i+1}$};
@@ -216,7 +219,7 @@
             \draw[arrow] (xor) -- (round);
             \draw[arrow] (round) -- (out);
           }
-          \only<6->{
+          \only<5->{
             \node[round] (subbytes) at ($(xor)+(0,-2)$) {$\mathsf{SubBytes}$};
             \node[round] (shiftrows) at ($(subbytes)+(0,-2)$) {$\mathsf{ShiftRows}$};
             \node[round] (mixcolumns) at ($(shiftrows)+(0,-2)$) {$\mathsf{MixColumns}$};
@@ -235,14 +238,14 @@
           \node[wire-commitment] at (0,-1) {};
           \node[wire-commitment] at (0,-9) {};
 
-          \only<7->{
+          \only<6->{
             \draw[commitment-arrow] (2,-0.75) -- (2,-3.5);
             \draw[commitment-arrow] (2,-9.25) -- (2,-4.5);
 
             \node[var,blue,above=1pt of subbytes.north east,anchor=south east] {$\left<a\right>^1$};
             \node[var,blue,below=1pt of subbytes.south east,anchor=north east] {$\left<b\right>^1$};
           }
-          \only<8->{
+          \only<7->{
             \node[var,blue,left=1pt of subbytes.west,anchor=east] {%
               \begin{tabular}{c}
                 $\left<a(ab-1)\right>^3$\\
