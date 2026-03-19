@@ -286,21 +286,28 @@
 
       \draw[->,thick] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [pos=0.5,above,font=\footnotesize,sloped] {correction value $d$};
       \draw[<-,thick] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [pos=0.5,above,font=\footnotesize,sloped] {amortization challenge $r_i$};
-      \draw[->,thick] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [pos=0.5,above,font=\footnotesize,sloped] {polynomial coefficients $a_i$};
+      \draw[->,thick] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [pos=0.5,above,font=\footnotesize,sloped] {masked coefficients $a_i$};
 
       \node[font=\footnotesize,anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-1.5) {%
+        \begin{tabular}{r}
+          Commit to witness\\
+          $d=w-u$
+        \end{tabular}%
+      };
+
+      \node[font=\footnotesize,anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-4.25) {%
         \begin{tabular}{l}
-          Commit to key, key\\
-          expansion, and\\
-          intermediate states.
+          $\left<z\right>=\sum_{i=1}^{C}r_i\left<z_i\right>$\\
+          \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
+          \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
         \end{tabular}%
       };
 
       \node[font=\footnotesize,anchor=west,outer sep=0pt,inner sep=-5pt] at (2.5,-5.75) {%
         \begin{tabular}{l}
-          Compute $\left<z\right>$\\
-          from $q$ and $r_i$,\\
-          check evaluation at $\Delta$.
+          Correct $q\leftarrow q+d\Delta$ \\
+          Compute $\left<z\right>$ and check \\
+          $a_2\Delta^2+a_1\Delta+a_0$
         \end{tabular}%
       };
 
