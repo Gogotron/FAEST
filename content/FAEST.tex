@@ -286,7 +286,7 @@
       \draw[<-,thick] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [pos=0.5,above,font=\footnotesize,sloped] {amortization challenge $r_i$};
       \draw[->,thick] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [pos=0.5,above,font=\footnotesize,sloped] {polynomial coefficients $a_i$};
 
-      \node[anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-1.5) {%
+      \node[font=\footnotesize,anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-1.5) {%
         \begin{tabular}{l}
           Commit to key, key\\
           expansion, and\\
@@ -294,11 +294,11 @@
         \end{tabular}%
       };
 
-      \node[anchor=west,outer sep=0pt,inner sep=-5pt] at (2.5,-5) {%
+      \node[font=\footnotesize,anchor=west,outer sep=0pt,inner sep=-5pt] at (2.5,-5) {%
         \begin{tabular}{l}
           Compute $\left<z\right>$\\
           from $q$ and $r_i$,\\
-          and check against $a_i$.
+          check evaluation at $\Delta$.
         \end{tabular}%
       };
 
