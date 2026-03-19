@@ -16,6 +16,19 @@
 \setbeamertemplate{navigation symbols}{}
 
 
+% Insert section-title slide before each section
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+
 % Information
 \title{FAEST}
 \author[Iñigo D.I.]{Iñigo Diaz Iribarnegaray}
@@ -25,11 +38,13 @@
 \begin{document}
   \frame{\titlepage}
   
+  \section{FAEST in VOLE-hybrid model}
   \input{content/VOLE.tex}
   \input{content/circuit-proofs.tex}
   \input{content/AES.tex}
   \input{content/FAEST.tex}
 
+  \section{Constructing VOLEitH}
   \input{content/GGM.tex}
   \input{content/VOLE-from-GGM.tex}
   \input{content/protocol.tex}
