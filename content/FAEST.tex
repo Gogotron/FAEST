@@ -274,8 +274,9 @@
 
       \coordinate (v1) at (0,-1.5);
       \draw[rounded corners,fill=gray!20,thick] ($(v1)+(-1,0.5)$) rectangle ($(v1)+(1,-0.5)$);
-      \node at (v1) {VOLE};
-      \draw[->,thick] ($(v1)+(-2,0)$) -- node[pos=0.5,above,font=\footnotesize] {$u,v$} ($(v1)+(-1,0)$);
+        \node[outer sep=0pt,inner sep=0pt] (v1text) at (v1) {VOLE};
+        \node[outer sep=0pt,inner sep=0pt,font=\footnotesize,left=0pt of v1text.west,anchor=east] {\$-};
+      \draw[<-,thick] ($(v1)+(-2,0)$) -- node[pos=0.5,above,font=\footnotesize] {$u,v$} ($(v1)+(-1,0)$);
       \only<1>{
         \draw[->,thick] ($(v1)+(2,0.25)$) -- node[pos=0.5,above,font=\footnotesize] {$\Delta$} ($(v1)+(1,0.25)$);
         \draw[->,thick] ($(v1)+(1,-0.25)$) -- node[pos=0.5,below,font=\footnotesize] {$q$} ($(v1)+(2,-0.25)$);
@@ -304,7 +305,8 @@
       \only<2>{
         \coordinate (v2) at (0,-5.75);
         \draw[rounded corners,fill=gray!20,thick] ($(v2)+(-1,0.5)$) rectangle ($(v2)+(1,-0.5)$);
-        \node at (v2) {VOLE};
+        \node[outer sep=0pt,inner sep=0pt] (v2text) at (v2) {VOLE};
+        \node[outer sep=0pt,inner sep=0pt,font=\footnotesize,left=0pt of v2text.west,anchor=east] {\$-};
         \draw[->,thick] ($(v2)+(2,0.25)$) -- node[pos=0.5,above,font=\footnotesize] {$\Delta$} ($(v2)+(1,0.25)$);
         \draw[->,thick] ($(v2)+(1,-0.25)$) -- node[pos=0.5,below,font=\footnotesize] {$q$} ($(v2)+(2,-0.25)$);
 
