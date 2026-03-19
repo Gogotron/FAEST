@@ -267,7 +267,6 @@
 \begin{frame}{}
   \begin{center}
     \begin{tikzpicture}
-      \draw[thin, draw=gray] (-3,1) grid (3,-7);
       \useasboundingbox (-3,1) rectangle (3,-7);
 
       \node[draw] (Alice) at (-2,0) {Prover};
@@ -294,7 +293,7 @@
         \end{tabular}%
       };
 
-      \node[font=\footnotesize,anchor=west,outer sep=0pt,inner sep=-5pt] at (2.5,-5) {%
+      \node[font=\footnotesize,anchor=west,outer sep=0pt,inner sep=-5pt] at (2.5,-5.75) {%
         \begin{tabular}{l}
           Compute $\left<z\right>$\\
           from $q$ and $r_i$,\\
@@ -303,10 +302,11 @@
       };
 
       \only<2>{
-        \coordinate (v2) at (0,-5.5);
+        \coordinate (v2) at (0,-5.75);
         \draw[rounded corners,fill=gray!20,thick] ($(v2)+(-1,0.5)$) rectangle ($(v2)+(1,-0.5)$);
         \node at (v2) {VOLE};
-        \draw[->,thick] ($(v2)+(1,0)$) -- node[pos=0.5,below,font=\footnotesize] {$\Delta,q$} ($(v2)+(2,0)$);
+        \draw[->,thick] ($(v2)+(2,0.25)$) -- node[pos=0.5,above,font=\footnotesize] {$\Delta$} ($(v2)+(1,0.25)$);
+        \draw[->,thick] ($(v2)+(1,-0.25)$) -- node[pos=0.5,below,font=\footnotesize] {$q$} ($(v2)+(2,-0.25)$);
 
         \node[font=\tiny,below=1pt of v1.south,anchor=north] {Part 1};
         \node[font=\tiny,below=1pt of v2.south,anchor=north] {Part 2};
