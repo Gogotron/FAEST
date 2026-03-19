@@ -1,3 +1,17 @@
-\begin{frame}{Concatenating VOLEs}
-  From VOLEs of size $k$ get a VOLE fo size $\lambda$.
+\begin{frame}{Concatenating \$-VOLEs}
+  GGM tree with $n$ leafs yields VOLE with $\Delta\in \mathbb{F}_{2^n}$ in $O(2^n)$ operations. \\
+  \ \\
+  Multiple \$-VOLEs:  $(u_i,v_i,\Delta_i,q_i)\hfill i\in [0,\tau),\ \lambda=\tau n$\\
+  Correction values: $c_i=u_0-u_i$ \; $q_i\leftarrow q_i+c_i\Delta_i$\\
+  \ \\
+  New VOLEs: $(u_0, v_i, \Delta_i, q_i)$\\
+  \ \\
+  Concatenate bit representations: $v=[v_0\ldots v_{\tau-1}],\ \Delta=[\Delta_0\ldots\Delta_{\tau-1}],\ q=[q_0\ldots q_{\tau-1}]$\\
+
+  \begin{center}
+    $q=u\Delta+v$ verified in %
+    \only<-1>{${\mathbb{F}_{2^n}}^\tau$}%
+    \only<2>{$\mathbb{F}_{2^{\tau n}}$}%
+    \only<3->{$\mathbb{F}_{2^\lambda}$}%
+  \end{center}
 \end{frame}
