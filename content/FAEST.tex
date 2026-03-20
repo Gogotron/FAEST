@@ -258,7 +258,7 @@
 \begin{frame}{FAEST}
   Hundreds of constraints $\left<z_i\right>^3$ \pause \qquad $\longrightarrow$ \qquad Amortization! \\
   \pause
-  $$\left<z\right>^3=\sum_{i=1}^{C}r_i\cdot\left<z_i\right>\qquad\qquad r_i\leftarrow\mathbb{F}_{2^8}$$
+  $$\left<z\right>^3=\sum_{i=1}^{C}h_i\cdot\left<z_i\right>\qquad\qquad h_i\leftarrow\mathbb{F}_{2^8}$$
   \ \\\ \\
   \ \\\ \\
   \pause
@@ -285,7 +285,7 @@
       }
 
       \draw[->,thick] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [pos=0.5,above,font=\footnotesize,sloped] {correction value $d$};
-      \draw[<-,thick] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [pos=0.5,above,font=\footnotesize,sloped] {amortization challenge $r_i$};
+      \draw[<-,thick] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [pos=0.5,above,font=\footnotesize,sloped] {amortization challenge $h_i$};
       \draw[->,thick] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [pos=0.5,above,font=\footnotesize,sloped] {masked coefficients $a_i$};
 
       \node[font=\footnotesize,anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-1.5) {%

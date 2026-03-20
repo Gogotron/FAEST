@@ -1,45 +1,67 @@
-\begin{frame}{VOLE from a GGM tree}
+\begin{frame}{\$-VOLE from a GGM tree}
   \begin{center}
     \begin{tikzpicture}[
       level 1/.style = {
         level distance   = 2mm,
         sibling distance = 20mm
       }, level 2/.style = {
-        level distance   = 2mm,
+        level distance   = 1mm,
         sibling distance = 10mm
       }, level 3/.style = {
-        level distance   = 2mm,
+        level distance   = 3mm,
+        sibling distance = 5mm
+      }, level 4/.style = {
+        level distance   = 4mm,
         sibling distance = 5mm
       }
     ]
-      \tikzset{leaf/.style={circle,inner sep=1pt,outer sep=0pt,font=\footnotesize}}
+      \useasboundingbox (-2.75,0.25) rectangle (2.75,-1.25);
+      \tikzset{leaf/.style={inner sep=1pt,outer sep=0pt,font=\scriptsize}}
       \coordinate
         child { coordinate
           child { coordinate
-            child { node[leaf] {$r_1$} }
-            child { node[leaf] {$r_2$} }
+            child { node[leaf] {$\mathsf{sd}_1$}
+              child { node[leaf] {$r_1$} }
+            }
+            child { node[leaf] {$\mathsf{sd}_2$}
+              child { node[leaf] {$r_2$} }
+            }
           }
           child { coordinate
-            child { node[leaf] {$r_3$} }
-            child { node[leaf] {$r_4$} }
+            child { node[leaf] {$\mathsf{sd}_3$}
+              child { node[leaf] {$r_3$} }
+            }
+            child { node[leaf] {$\mathsf{sd}_4$}
+              child { node[leaf] {$r_4$} }
+            }
           }
         }
         child { coordinate
           child { coordinate
-            child { node[leaf] {$r_5$} }
-            child { node[leaf] {$r_6$} }
+            child { node[leaf] {$\mathsf{sd}_5$}
+              child { node[leaf] {$r_5$} }
+            }
+            child { node[leaf] {$\mathsf{sd}_6$}
+              child { node[leaf] {$r_6$} }
+            }
           }
           child { coordinate
-            child { node[leaf] {$r_7$} }
-            child { node[leaf] {$r_8$} }
+            child { node[leaf] {$\mathsf{sd}_7$}
+              child { node[leaf] {$r_7$} }
+            }
+            child { node[leaf] {$\mathsf{sd}_8$}
+              child { node[leaf] (r8) {$r_8$} }
+            }
           }
         }
+        (0,0)
       ;
+      \node[right=0pt of r8.base east,anchor=base west,font=\scriptsize] {$\in \mathbb{F}_2^\ell$};
     \end{tikzpicture}
-    \vspace{1em}\pause
-    $$u=\sum_{i=1}^{2^n}r_i\in \mathbb{F}_2\qquad v=-\sum_{i=1}^{2^n}r_i\cdot i\in \mathbb{F}_{2^n}$$
+    \vspace{0.5em}\pause
+    $$u=\sum_{i=1}^{2^n}r_i\in \mathbb{F}_2^\ell\qquad v=-\sum_{i=1}^{2^n}r_i\cdot i\in \mathbb{F}_{2^n}^\ell$$
     $$\Delta=j^*\in \mathbb{F}_{2^n}$$
-    \vspace{1em}\\\pause
+    \vspace{0.1em}\\\pause
     Reveal all $r_1,\ldots,r_8$ except $r_{j^*}$:
     $$q=\sum_{i=1}^{2^n}r_i\cdot(j^*-i)=u\cdot\Delta+v\in \mathbb{F}_{2^n}$$
   \end{center}
