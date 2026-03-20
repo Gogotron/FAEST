@@ -13,9 +13,11 @@
       \useasboundingbox (-2,0.25) rectangle (2.75,-0.25);
       \node[inner sep=0pt,outer sep=0pt] (main) {$q=u\Delta+v$ verified in\hphantom{ }};
       \node[inner sep=0pt,outer sep=0pt,right=0pt of main.base east, anchor=base west] {%
-        \only<-4>{${\mathbb{F}_{2^n}}^\tau$}%
-        \only<5>{$\mathbb{F}_{2^{n\tau}}$}%
-        \only<6->{$\mathbb{F}_{2^\lambda}$}%
+        $\left(%
+        \only<-4>{{\mathbb{F}_{2^n}}^\tau}%
+        \only<5>{\mathbb{F}_{2^{n\tau}}}%
+        \only<6->{\mathbb{F}_{2^\lambda}}%
+        \right)^\ell$%
       };
     \end{tikzpicture}
   \end{center}
