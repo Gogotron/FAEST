@@ -22,3 +22,21 @@
     \end{tikzpicture}
   \end{center}
 \end{frame}
+
+
+\begin{frame}{Consistency check}
+  \begin{alertblock}{Warning}
+    The receiver can't check that $c_i=u_0-u_i$.
+    The sender could lie!\\
+    We might not have $q=u\Delta+v$.
+  \end{alertblock}
+  \pause
+  \ \\
+  Random \emph{linear} universal hash function: $H$\\
+  Send: $\tilde{u}=Hu$, $\tilde{v}=Hv$ \\
+  Check: $\tilde{q}=\tilde{u}\Delta+\tilde{v}$ with $\tilde{q}=Hq$\\
+  \pause
+  \ \\
+  Reveals $(\lambda+B)$-bit linear function of $u$.\\
+  Use longer VOLE: $\hat{\ell}=\ell+\lambda+B$
+\end{frame}
