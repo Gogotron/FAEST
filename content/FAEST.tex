@@ -267,7 +267,7 @@
 \end{frame}
 
 
-\begin{frame}<-2>[label=protocol]{}
+\begin{frame}<-5>[label=protocol]{}
   \begin{center}
     \begin{tikzpicture}[
         arrow/.style = {
@@ -290,60 +290,63 @@
       \node[draw] (Alice) at (-2,0) {Prover};
       \node[draw] (Bob) at (2,0) {Verifier};
 
-      \only<-3>{
+      \only<-6>{
         \coordinate (v1) at (0,-1.5);
         \draw[rounded corners,fill=gray!20,thick] ($(v1)+(-1,0.5)$) rectangle ($(v1)+(1,-0.5)$);
         \node[outer sep=0pt,inner sep=0pt] (v1text) at (v1) {VOLE};
         \node[outer sep=0pt,inner sep=0pt,font=\footnotesize,left=0pt of v1text.west,anchor=east] {\$-};
         \draw[<-,arrow] ($(v1)+(-2,0)$) -- node[arrow-label] {$u,v$} ($(v1)+(-1,0)$);
-        \only<1>{
+        \only<-4>{
           \draw[->,arrow] ($(v1)+(2,0.25)$) -- node[arrow-label] {$\Delta$} ($(v1)+(1,0.25)$);
           \draw[->,arrow] ($(v1)+(1,-0.25)$) -- node[arrow-label,below] {$q$} ($(v1)+(2,-0.25)$);
         }
       }
-      \only<4->{
+      \only<7->{
         \draw[->,arrow] ($(Alice)+(0,-0.75)$) -- ($(Bob)+(0,-1)$) node[arrow-label] {$\mathsf{com_{tree}}, c_i$};
         \draw[<-,arrow] ($(Alice)+(0,-1.5)$) -- ($(Bob)+(0,-1.25)$) node[arrow-label] {$H$};
         \draw[->,arrow] ($(Alice)+(0,-1.75)$) -- ($(Bob)+(0,-2)$) node[arrow-label] {$\tilde{u}, \tilde{v}$};
       }
 
-      \draw[->,arrow] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [arrow-label] {correction value $d$};
-      \draw[<-,arrow] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [arrow-label] {amortization challenge $h_i$};
-      \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $a_i$};
+      \only<-5>{ \tikzset{hideable/.style={}}; }
+      \only<6->{ \tikzset{hideable/.style={color=gray}}; }
 
-      \only<-2,5->{
-        \node[computation,anchor=east] at (-2.5,-2.5) {%
-          \begin{tabular}{r}
-            VOLE commit to witness\\
-            $d=w-u$
-          \end{tabular}%
-        };
-        \node[computation,anchor=east] at (-2.5,-4.25) {%
-          \begin{tabular}{l}
-            $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
-            \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
-            \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
-          \end{tabular}%
-        };
-        \node[computation,anchor=west] at (2.5,-6) {%
+      \pause
+      \draw[->,arrow] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [arrow-label] {correction value $d$};
+      \node[computation,hideable,anchor=east] at (-2.5,-2.5) {%
+        \begin{tabular}{r}
+          VOLE commit to witness\\
+          $d=w-u$
+        \end{tabular}%
+      };
+      \pause
+      \draw[<-,arrow] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [arrow-label] {amortization challenge $h_i$};
+      \node[computation,hideable,anchor=east] at (-2.5,-4.25) {%
+        \begin{tabular}{l}
+          $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
+          \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
+          \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
+        \end{tabular}%
+      };
+      \pause
+      \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $a_i$};
+      \node[computation,hideable,anchor=west] at (2.5,-6) {%
+        \begin{tabular}{l}%
+          Correct $q\leftarrow q+d\Delta$ \\
+          Compute $\left<z\right>$ and check \\
+          $a_2\Delta^2+a_1\Delta+a_0$
+        \end{tabular}%
+      };
+      \only<8->{%
+        \node[computation,anchor=west] at (2.5,-4.5) {%
           \begin{tabular}{l}%
-            Correct $q\leftarrow q+d\Delta$ \\
-            Compute $\left<z\right>$ and check \\
-            $a_2\Delta^2+a_1\Delta+a_0$
+            Check $\mathsf{open_{tree}}\rightarrow\mathsf{com_{tree}}$ \\
+            $q\leftarrow \mathsf{open_{tree}},\Delta,c_i$ \\
+            Check $\tilde{q}=\tilde{u}\Delta+\tilde{v}$\\
           \end{tabular}%
         };
-        \only<6->{%
-          \node[computation,anchor=west] at (2.5,-4.5) {%
-            \begin{tabular}{l}%
-              Check $\mathsf{open_{tree}}\rightarrow\mathsf{com_{tree}}$ \\
-              $q\leftarrow \mathsf{open_{tree}},\Delta,c_i$ \\
-              Check $\tilde{q}=\tilde{u}\Delta+\tilde{v}$\\
-            \end{tabular}%
-          };
-        }
       }
 
-      \only<2-3>{
+      \only<5-6>{
         \coordinate (v2) at (0,-5.75);
         \draw[rounded corners,fill=gray!20,thick] ($(v2)+(-1,0.5)$) rectangle ($(v2)+(1,-0.5)$);
         \node[outer sep=0pt,inner sep=0pt] (v2text) at (v2) {VOLE};
@@ -354,7 +357,7 @@
         \node[font=\tiny,below=1pt of v1.south,anchor=north] {Part 1};
         \node[font=\tiny,below=1pt of v2.south,anchor=north] {Part 2};
       }
-      \only<4->{
+      \only<7->{
         \draw[<-,arrow] ($(Alice)+(0,-5.75)$) -- ($(Bob)+(0,-5.5)$) node[arrow-label] {$\Delta$};
         \draw[->,arrow] ($(Alice)+(0,-6)$) -- ($(Bob)+(0,-6.25)$) node[arrow-label] {$\mathsf{open_{tree}}$};
       }
