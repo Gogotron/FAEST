@@ -141,7 +141,8 @@
               \foreach \pos in {k, e, 1, 2, 8, 9} {
                 \node[wire-commitment] at (com\pos) {};
               }
-              \node[var,blue] (w) at (1,1) {$w$};
+              \node[var,rectangle,text opacity=0,draw=blue,fill=blue!50!cyan!20,rounded corners,inner sep=3pt] (box) at (2,1) {$w \in \mathbb{F}_2^\ell$};
+              \node[var,blue,right=3pt of box.west] (w) {$w$};
               \node[var,right=0pt of w.base east,anchor=base west] {$\in \mathbb{F}_2^\ell$};
             }
             \only<2>{
