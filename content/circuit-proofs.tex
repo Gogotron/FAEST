@@ -5,228 +5,112 @@
   \begin{columns}[c] % align columns
     \begin{column}{.37\textwidth}
       \begin{center}
-        \begin{overprint}
-          \onslide<2-3>
-            \begin{tikzpicture}[
-              level 1/.style = {
-                level distance   = 7mm,
-              }, level 2/.style = {
-                level distance   = 7mm,
-                sibling distance = 24mm
-              }, level 3/.style = {
-                level distance   = 7mm,
-                sibling distance = 12mm
-              }, level 4/.style = {
-                level distance   = 10mm,
-                sibling distance = 6mm
-              },
-              grow = up,
-              operation/.style={circle,draw=black,inner sep=1pt,outer sep=0pt},
-              input-output/.style={rectangle,draw=none,inner sep=1pt,outer sep=0pt},
-            ]
-              \node[input-output] {$\mathsf{out}$}
-                child[<-] {
+        \begin{tikzpicture}[
+          level 1/.style = {
+            level distance   = 7mm,
+          }, level 2/.style = {
+            level distance   = 7mm,
+            sibling distance = 24mm
+          }, level 3/.style = {
+            level distance   = 7mm,
+            sibling distance = 12mm
+          }, level 4/.style = {
+            level distance   = 10mm,
+            sibling distance = 6mm
+          },
+          grow = up,
+          arrow/.style = {
+            {Latex[length=1mm,width=1mm]}-,
+          },
+          operation/.style = {
+            circle,
+            draw = black,
+            inner sep = 1pt,
+            outer sep = 0pt,
+          },
+          input-output/.style = {
+            rectangle,
+            draw = none,
+            inner sep = 1pt,
+            outer sep = 0pt,
+          },
+          wire-commitment/.style = {
+            circle,
+            draw = blue,
+            fill = blue,
+            inner sep = 0.5pt,
+            outer sep = 0pt,
+          },
+          hide/.style = {
+            draw=none,
+            fill=none,
+          },
+        ]
+          \only<2-3>{\tikzset{wire-commitment/.style={}};}
+          \only<-4>{\tikzset{hide/.style={}};}
+          \node[input-output] {$\mathsf{out}$}
+            child[arrow] {
+              node[operation] {$+$}
+              child[arrow] {
+                node[operation] {$\times$}
+                child[arrow] {
                   node[operation] {$+$}
-                  child[<-] {
-                    node[operation] {$\times$}
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_3$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_3$}
-                      }
-                    }
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_2$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_2$}
-                      }
-                    }
+                  child[arrow] {
+                    node[input-output] {$\mathsf{in}_3$}
+                    edge from parent node[wire-commitment] {}
                   }
-                  child[<-] { node[operation] {$\times$}
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_1$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_1$}
-                      }
-                    }
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_0$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_0$}
-                      }
-                    }
+                  child[arrow] {
+                    node[input-output] {$k_3$}
+                    edge from parent node[wire-commitment] {}
                   }
+                  edge from parent node[wire-commitment,hide] {}
                 }
-              ;
-            \end{tikzpicture}
-          \onslide<4>
-            \begin{tikzpicture}[
-              level 1/.style = {
-                level distance   = 7mm,
-              }, level 2/.style = {
-                level distance   = 7mm,
-                sibling distance = 24mm
-              }, level 3/.style = {
-                level distance   = 7mm,
-                sibling distance = 12mm
-              }, level 4/.style = {
-                level distance   = 10mm,
-                sibling distance = 6mm
-              },
-              grow = up,
-              operation/.style={circle,draw=black,inner sep=1pt,outer sep=0pt},
-              input-output/.style={rectangle,draw=none,inner sep=1pt,outer sep=0pt},
-              wire-commitment/.style={circle,draw=blue,fill=blue,inner sep=0.5pt,outer sep=0pt},
-            ]
-              \node[input-output] {$\mathsf{out}$}
-                child[<-] {
+                child[arrow] {
                   node[operation] {$+$}
-                  child[<-] {
-                    node[operation] {$\times$}
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_3$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_3$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      edge from parent node[wire-commitment] {}
-                    }
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_2$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_2$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      edge from parent node[wire-commitment] {}
-                    }
+                  child[arrow] {
+                    node[input-output] {$\mathsf{in}_2$}
                     edge from parent node[wire-commitment] {}
                   }
-                  child[<-] {
-                    node[operation] {$\times$}
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_1$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_1$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      edge from parent node[wire-commitment] {}
-                    }
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_0$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_0$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                      edge from parent node[wire-commitment] {}
-                    }
+                  child[arrow] {
+                    node[input-output] {$k_2$}
                     edge from parent node[wire-commitment] {}
                   }
-                  edge from parent node[wire-commitment] {}
+                  edge from parent node[wire-commitment,hide] {}
                 }
-              ;
-            \end{tikzpicture}
-          \onslide<5->
-            \begin{tikzpicture}[
-              level 1/.style = {
-                level distance   = 7mm,
-              }, level 2/.style = {
-                level distance   = 7mm,
-                sibling distance = 24mm
-              }, level 3/.style = {
-                level distance   = 7mm,
-                sibling distance = 12mm
-              }, level 4/.style = {
-                level distance   = 10mm,
-                sibling distance = 6mm
-              },
-              grow = up,
-              operation/.style={circle,draw=black,inner sep=1pt,outer sep=0pt},
-              input-output/.style={rectangle,draw=none,inner sep=1pt,outer sep=0pt},
-              wire-commitment/.style={circle,draw=blue,fill=blue,inner sep=0.5pt,outer sep=0pt},
-            ]
-              \node[input-output] {$\mathsf{out}$}
-                child[<-] {
+                edge from parent node[wire-commitment] {}
+              }
+              child[arrow] {
+                node[operation] {$\times$}
+                child[arrow] {
                   node[operation] {$+$}
-                  child[<-] {
-                    node[operation] {$\times$}
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_3$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_3$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                    }
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_2$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_2$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                    }
+                  child[arrow] {
+                    node[input-output] {$\mathsf{in}_1$}
                     edge from parent node[wire-commitment] {}
                   }
-                  child[<-] {
-                    node[operation] {$\times$}
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_1$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_1$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                    }
-                    child[<-] {
-                      node[operation] {$+$}
-                      child[<-] {
-                        node[input-output] {$\mathsf{in}_0$}
-                      }
-                      child[<-] {
-                        node[input-output] {$k_0$}
-                        edge from parent node[wire-commitment] {}
-                      }
-                    }
+                  child[arrow] {
+                    node[input-output] {$k_1$}
                     edge from parent node[wire-commitment] {}
                   }
+                  edge from parent node[wire-commitment,hide] {}
                 }
-              ;
-            \end{tikzpicture}
-        \end{overprint}
+                child[arrow] {
+                  node[operation] {$+$}
+                  child[arrow] {
+                    node[input-output] {$\mathsf{in}_0$}
+                    edge from parent node[wire-commitment] {}
+                  }
+                  child[arrow] {
+                    node[input-output] {$k_0$}
+                    edge from parent node[wire-commitment] {}
+                  }
+                  edge from parent node[wire-commitment,hide] {}
+                }
+                edge from parent node[wire-commitment] {}
+              }
+              edge from parent node[wire-commitment,hide] {}
+            }
+          ;
+        \end{tikzpicture}
       \end{center}
     \end{column}%
     \hfill%
