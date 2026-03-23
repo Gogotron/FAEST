@@ -284,15 +284,26 @@
           outer sep = 0pt,
           inner sep = -5pt,
         },
+        party/.style = {
+          rectangle,
+          draw,
+          rounded corners = 2pt,
+          fill = cyan!70!gray!30
+        },
+        VOLE/.style = {
+          rounded corners,
+          fill = gray!20,
+          thick,
+        },
       ]
       \useasboundingbox (-3,1) rectangle (3,-7);
 
-      \node[draw] (Alice) at (-2,0) {Prover};
-      \node[draw] (Bob) at (2,0) {Verifier};
+      \node[party] (Alice) at (-2,0) {Prover};
+      \node[party] (Bob) at (2,0) {Verifier};
 
       \only<-6>{
         \coordinate (v1) at (0,-1.5);
-        \draw[rounded corners,fill=gray!20,thick] ($(v1)+(-1,0.5)$) rectangle ($(v1)+(1,-0.5)$);
+        \draw[VOLE] ($(v1)+(-1,0.5)$) rectangle ($(v1)+(1,-0.5)$);
         \node[outer sep=0pt,inner sep=0pt] (v1text) at (v1) {VOLE};
         \node[outer sep=0pt,inner sep=0pt,font=\footnotesize,left=0pt of v1text.west,anchor=east] {\$-};
         \draw[<-,arrow] ($(v1)+(-2,0)$) -- node[arrow-label] {$u,v$} ($(v1)+(-1,0)$);
@@ -351,7 +362,7 @@
 
       \only<5-6>{
         \coordinate (v2) at (0,-5.75);
-        \draw[rounded corners,fill=gray!20,thick] ($(v2)+(-1,0.5)$) rectangle ($(v2)+(1,-0.5)$);
+        \draw[VOLE] ($(v2)+(-1,0.5)$) rectangle ($(v2)+(1,-0.5)$);
         \node[outer sep=0pt,inner sep=0pt] (v2text) at (v2) {VOLE};
         \node[outer sep=0pt,inner sep=0pt,font=\footnotesize,left=0pt of v2text.west,anchor=east] {\$-};
         \draw[->,arrow] ($(v2)+(2,0.25)$) -- node[arrow-label] {$\Delta$} ($(v2)+(1,0.25)$);
