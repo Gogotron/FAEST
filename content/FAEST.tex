@@ -310,32 +310,35 @@
       \only<-5>{ \tikzset{hideable/.style={}}; }
       \only<6->{ \tikzset{hideable/.style={color=gray}}; }
 
-      \pause
-      \draw[->,arrow] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [arrow-label] {correction value $d$};
-      \node[computation,hideable,anchor=east] at (-2.5,-2.5) {%
-        \begin{tabular}{r}
-          VOLE commit to witness\\
-          $d=w-u$
-        \end{tabular}%
-      };
-      \pause
-      \draw[<-,arrow] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [arrow-label] {amortization challenge $h_i$};
-      \node[computation,hideable,anchor=east] at (-2.5,-4.25) {%
-        \begin{tabular}{l}
-          $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
-          \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
-          \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
-        \end{tabular}%
-      };
-      \pause
-      \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $a_i$};
-      \node[computation,hideable,anchor=west] at (2.5,-6) {%
-        \begin{tabular}{l}%
-          Correct $q\leftarrow q+d\Delta$ \\
-          Compute $\left<z\right>$ and check \\
-          $a_2\Delta^2+a_1\Delta+a_0$
-        \end{tabular}%
-      };
+      \only<2->{
+        \draw[->,arrow] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [arrow-label] {correction value $d$};
+        \node[computation,hideable,anchor=east] at (-2.5,-2.5) {%
+          \begin{tabular}{r}
+            VOLE commit to witness\\
+            $d=w-u$
+          \end{tabular}%
+        };
+      }
+      \only<3->{
+        \draw[<-,arrow] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [arrow-label] {amortization challenge $h_i$};
+        \node[computation,hideable,anchor=east] at (-2.5,-4.25) {%
+          \begin{tabular}{l}
+            $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
+            \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
+            \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
+          \end{tabular}%
+        };
+      }
+      \only<4->{
+        \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $a_i$};
+        \node[computation,hideable,anchor=west] at (2.5,-6) {%
+          \begin{tabular}{l}%
+            Correct $q\leftarrow q+d\Delta$ \\
+            Compute $\left<z\right>$ and check \\
+            $a_2\Delta^2+a_1\Delta+a_0$
+          \end{tabular}%
+        };
+      }
       \only<8->{%
         \node[computation,anchor=west] at (2.5,-4.5) {%
           \begin{tabular}{l}%
