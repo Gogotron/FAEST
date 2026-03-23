@@ -4,7 +4,7 @@
     \item $\texttt{KeyExpansion}$
     \item 10-14 rounds, in each round:
       \begin{enumerate}
-        \item $\texttt{SubBytes}$, quadratic operation $x\mapsto x^{-1}$ (and $0\mapsto 0$)
+        \item $\texttt{SubBytes}$, non-linear operation $x\mapsto x^{-1}$ (and $0\mapsto 0$)
         \item $\texttt{ShiftRows}$, $\texttt{MixColumns}$, $\texttt{AddRoundKey}$, linear operations
       \end{enumerate}
   \end{enumerate}
