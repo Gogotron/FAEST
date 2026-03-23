@@ -109,6 +109,10 @@
         \node[anchor=mid west] (commit) at ($(RRRcom)+(0.125,0)+(0.125,0)$) {$\mathsf{com_{tree}}$};
         \draw[->] ($(RRRcom)+(0.125,0)$) -- (commit);
       }
+      % Opening
+      \only<4->{
+        \node[below right=2pt and 0pt of commit.south west,draw=yellow, rounded corners,thick,fill=yellow!10] {$\mathsf{open_{tree}}$};
+      }
     \end{tikzpicture}
   \end{center}
 \end{frame}
