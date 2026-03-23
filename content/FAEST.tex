@@ -266,61 +266,96 @@
 \end{frame}
 
 
-\begin{frame}{}
+\begin{frame}<-2>[label=protocol]{}
   \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[
+        arrow/.style = {
+          thick
+        },
+        arrow-label/.style = {
+          pos = 0.5,
+          above,
+          font = \footnotesize,
+          sloped,
+        },
+        computation/.style = {
+          font = \footnotesize,
+          outer sep = 0pt,
+          inner sep = -5pt,
+        },
+      ]
       \useasboundingbox (-3,1) rectangle (3,-7);
 
       \node[draw] (Alice) at (-2,0) {Prover};
       \node[draw] (Bob) at (2,0) {Verifier};
 
-      \coordinate (v1) at (0,-1.5);
-      \draw[rounded corners,fill=gray!20,thick] ($(v1)+(-1,0.5)$) rectangle ($(v1)+(1,-0.5)$);
+      \only<-3>{
+        \coordinate (v1) at (0,-1.5);
+        \draw[rounded corners,fill=gray!20,thick] ($(v1)+(-1,0.5)$) rectangle ($(v1)+(1,-0.5)$);
         \node[outer sep=0pt,inner sep=0pt] (v1text) at (v1) {VOLE};
         \node[outer sep=0pt,inner sep=0pt,font=\footnotesize,left=0pt of v1text.west,anchor=east] {\$-};
-      \draw[<-,thick] ($(v1)+(-2,0)$) -- node[pos=0.5,above,font=\footnotesize] {$u,v$} ($(v1)+(-1,0)$);
-      \only<1>{
-        \draw[->,thick] ($(v1)+(2,0.25)$) -- node[pos=0.5,above,font=\footnotesize] {$\Delta$} ($(v1)+(1,0.25)$);
-        \draw[->,thick] ($(v1)+(1,-0.25)$) -- node[pos=0.5,below,font=\footnotesize] {$q$} ($(v1)+(2,-0.25)$);
+        \draw[<-,arrow] ($(v1)+(-2,0)$) -- node[arrow-label] {$u,v$} ($(v1)+(-1,0)$);
+        \only<1>{
+          \draw[->,arrow] ($(v1)+(2,0.25)$) -- node[arrow-label] {$\Delta$} ($(v1)+(1,0.25)$);
+          \draw[->,arrow] ($(v1)+(1,-0.25)$) -- node[arrow-label,below] {$q$} ($(v1)+(2,-0.25)$);
+        }
+      }
+      \only<4->{
+        \draw[->,arrow] ($(Alice)+(0,-0.75)$) -- ($(Bob)+(0,-1)$) node[arrow-label] {$\mathsf{com_{tree}}, c_i$};
+        \draw[<-,arrow] ($(Alice)+(0,-1.5)$) -- ($(Bob)+(0,-1.25)$) node[arrow-label] {$H$};
+        \draw[->,arrow] ($(Alice)+(0,-1.75)$) -- ($(Bob)+(0,-2)$) node[arrow-label] {$\tilde{u}, \tilde{v}$};
       }
 
-      \draw[->,thick] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [pos=0.5,above,font=\footnotesize,sloped] {correction value $d$};
-      \draw[<-,thick] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [pos=0.5,above,font=\footnotesize,sloped] {amortization challenge $h_i$};
-      \draw[->,thick] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [pos=0.5,above,font=\footnotesize,sloped] {masked coefficients $a_i$};
+      \draw[->,arrow] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [arrow-label] {correction value $d$};
+      \draw[<-,arrow] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [arrow-label] {amortization challenge $h_i$};
+      \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $a_i$};
 
-      \node[font=\footnotesize,anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-1.5) {%
-        \begin{tabular}{r}
-          Commit to witness\\
-          $d=w-u$
-        \end{tabular}%
-      };
+      \only<-2,5->{
+        \node[computation,anchor=east] at (-2.5,-2.5) {%
+          \begin{tabular}{r}
+            VOLE commit to witness\\
+            $d=w-u$
+          \end{tabular}%
+        };
+        \node[computation,anchor=east] at (-2.5,-4.25) {%
+          \begin{tabular}{l}
+            $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
+            \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
+            \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
+          \end{tabular}%
+        };
+        \node[computation,anchor=west] at (2.5,-6) {%
+          \begin{tabular}{l}%
+            Correct $q\leftarrow q+d\Delta$ \\
+            Compute $\left<z\right>$ and check \\
+            $a_2\Delta^2+a_1\Delta+a_0$
+          \end{tabular}%
+        };
+        \only<6->{%
+          \node[computation,anchor=west] at (2.5,-4.5) {%
+            \begin{tabular}{l}%
+              Check $\mathsf{open_{tree}}\rightarrow\mathsf{com_{tree}}$ \\
+              $q\leftarrow \mathsf{open_{tree}},\Delta,c_i$ \\
+              Check $\tilde{q}=\tilde{u}\Delta+\tilde{v}$\\
+            \end{tabular}%
+          };
+        }
+      }
 
-      \node[font=\footnotesize,anchor=east,outer sep=0pt,inner sep=-5pt] at (-2.5,-4.25) {%
-        \begin{tabular}{l}
-          $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
-          \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
-          \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
-        \end{tabular}%
-      };
-
-      \node[font=\footnotesize,anchor=west,outer sep=0pt,inner sep=-5pt] at (2.5,-5.75) {%
-        \begin{tabular}{l}
-          Correct $q\leftarrow q+d\Delta$ \\
-          Compute $\left<z\right>$ and check \\
-          $a_2\Delta^2+a_1\Delta+a_0$
-        \end{tabular}%
-      };
-
-      \only<2>{
+      \only<2-3>{
         \coordinate (v2) at (0,-5.75);
         \draw[rounded corners,fill=gray!20,thick] ($(v2)+(-1,0.5)$) rectangle ($(v2)+(1,-0.5)$);
         \node[outer sep=0pt,inner sep=0pt] (v2text) at (v2) {VOLE};
         \node[outer sep=0pt,inner sep=0pt,font=\footnotesize,left=0pt of v2text.west,anchor=east] {\$-};
-        \draw[->,thick] ($(v2)+(2,0.25)$) -- node[pos=0.5,above,font=\footnotesize] {$\Delta$} ($(v2)+(1,0.25)$);
-        \draw[->,thick] ($(v2)+(1,-0.25)$) -- node[pos=0.5,below,font=\footnotesize] {$q$} ($(v2)+(2,-0.25)$);
+        \draw[->,arrow] ($(v2)+(2,0.25)$) -- node[arrow-label] {$\Delta$} ($(v2)+(1,0.25)$);
+        \draw[->,arrow] ($(v2)+(1,-0.25)$) -- node[arrow-label,below] {$q$} ($(v2)+(2,-0.25)$);
 
         \node[font=\tiny,below=1pt of v1.south,anchor=north] {Part 1};
         \node[font=\tiny,below=1pt of v2.south,anchor=north] {Part 2};
+      }
+      \only<4->{
+        \draw[<-,arrow] ($(Alice)+(0,-5.75)$) -- ($(Bob)+(0,-5.5)$) node[arrow-label] {$\Delta$};
+        \draw[->,arrow] ($(Alice)+(0,-6)$) -- ($(Bob)+(0,-6.25)$) node[arrow-label] {$\mathsf{open_{tree}}$};
       }
     \end{tikzpicture}
   \end{center}
