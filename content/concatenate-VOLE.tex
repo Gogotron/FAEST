@@ -3,24 +3,24 @@
   \ \\\pause
   Multiple \$-VOLEs:  $(u_i,v_i,\Delta_i,q_i)\hfill i\in [0,\tau),\ \lambda=n\tau$\\
   \ \\\pause
-  Correction values: $c_i=u_0-u_i$,\ $q_i\leftarrow q_i+c_i\Delta_i$,\ $u=u_0$\\
-  New VOLEs: $(u, v_i, \Delta_i, q_i)$\\
+  Correction values: $c_i=u_0-u_i$\\
+  \hphantom{Correction values:} $q_i\leftarrow q_i+c_i\Delta_i$\\
+  New VOLEs: $(u, v_i, \Delta_i, q_i),\ q_i=u\Delta_i+v_i\hfill u=u_0$\\
   \ \\\pause
-  Concatenate bit representations: $v=[v_0\ldots v_{\tau-1}],\ \Delta=[\Delta_0\ldots\Delta_{\tau-1}],\ q=[q_0\ldots q_{\tau-1}]$\\
+  Concatenate bit representations:
+  \vspace{-1em}
+  $$v=[v_0\ldots v_{\tau-1}],\qquad\Delta=[\Delta_0\ldots\Delta_{\tau-1}],\qquad q=[q_0\ldots q_{\tau-1}]$$
 
-  \begin{center}
-    \begin{tikzpicture}
-      \useasboundingbox (-2,0.25) rectangle (2.75,-0.25);
-      \node[inner sep=0pt,outer sep=0pt] (main) {$q=u\Delta+v$ verified in\hphantom{ }};
-      \node[inner sep=0pt,outer sep=0pt,right=0pt of main.base east, anchor=base west] {%
-        $\left(%
-        \only<-4>{{\mathbb{F}_{2^n}}^\tau}%
-        \only<5>{\mathbb{F}_{2^{n\tau}}}%
-        \only<6->{\mathbb{F}_{2^\lambda}}%
-        \right)^\ell$%
-      };
-    \end{tikzpicture}
-  \end{center}
+  \begin{overprint}
+    \onslide<4>
+    $$q_i=u\Delta_i+v_i\text{ verified in }\mathbb{F}_{2^n}$$
+    \onslide<5>
+    $$q_i=u\Delta_i+v_i\text{ verified bit by bit in }\mathbb{F}_2^n$$
+    \onslide<6>
+    $$q=u\Delta+v\text{ verified bit by bit in }\mathbb{F}_2^{n\tau}=\mathbb{F}_2^\lambda$$
+    \onslide<7>
+    $$q=u\Delta+v\text{ verified in }\mathbb{F}_{2^\lambda}$$
+  \end{overprint}
 \end{frame}
 
 
