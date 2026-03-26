@@ -267,7 +267,18 @@
   \ \\\ \\
   \ \\\ \\
   \pause
-  Prove $\left<z\right>$ is commitment to 0, revealing masked coefficients of polynomial commitment $0X^3+a_2X^2+a_1X+a_0$
+  Prove $\left<z\right>$ is commitment to 0, revealing masked coefficients of polynomial commitment $P(X)=0X^3+a_2X^2+a_1X+a_0$
+\end{frame}
+
+
+\begin{frame}{}
+  Mask $P(X)=0X^3+a_2X^2+a_1X+a_0$\\
+  Use 2 VOLEs with $u_1,u_2$ in $\mathbb{F}_{2^\lambda}$\\
+  $$\setlength{\arraycolsep}{1pt}\begin{array}{cccccccccccc}
+    a_2&X^2&+&a_1&X&+&a_0\\
+    u_1&X&+&v_1& & & \\
+     & & &u_2&X&+&v_2\\
+  \end{array}$$
 \end{frame}
 
 
