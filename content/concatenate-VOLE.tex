@@ -34,11 +34,12 @@
 
 \begin{frame}{Combining small \$-VOLEs}
   Multiple \$-VOLEs: $q_i=u_i\Delta_i+v_i\hfill i\in [1,\tau],\ \lambda=n\tau$\\
-  $$q_i\in \mathbb{F}_{2^n}^\ell,\quad u_i\in \mathbb{F}_2^\ell$$
-  \ \\\pause
-  Correction values: $c_i=u_0-u_i$\\
-  \hphantom{Correction values:} $q'_i\leftarrow q_i+c_i\Delta_i$\\
-  New VOLEs: $q'_i=u\Delta_i+v_i\hfill u=u_0$\\
+  $$q_i\in \mathbb{F}_{2^n}^\ell,\quad u_i\in \mathbb{F}_2^\ell,\quad\Delta_i\in \mathbb{F}_{2^n},\quad v_i\in \mathbb{F}_{2^n}^\ell$$
+  \ \\\ \\\pause
+  Correction values: $c_i=u_0-u_i\hfill u=u_0$\\
+  \hphantom{Correction values:} $q'_i=q_i+c_i\Delta_i$\\
+  \ \\
+  New corrected VOLEs: $q'_i=u\Delta_i+v_i$
 \end{frame}
 
 
