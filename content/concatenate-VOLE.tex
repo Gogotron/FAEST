@@ -1,6 +1,38 @@
-\begin{frame}{Concatenating \$-VOLEs}
-  GGM tree with $n$ leafs yields VOLE with $\Delta\in \mathbb{F}_{2^n}$ in $O(2^n)$ operations. \\
-  \ \\\pause
+\begin{frame}{Combining small \$-VOLEs}
+  \begin{alertblock}{Problem}
+    GGM tree with $\lambda$ leafs yields VOLE with $\Delta\in \mathbb{F}_{2^\lambda}$ in $O(2^\lambda)$ operations.
+  \end{alertblock}
+  \pause
+  \begin{block}{Solution}
+    Combine $\tau$ small VOLEs with $\Delta\in \mathbb{F}_{2^n}$, in $O(\tau2^n)$ operations, for $\lambda=n\tau$.
+  \end{block}
+  \begin{columns}
+    \begin{column}{0.15\textwidth}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+      \begin{overprint}
+        \onslide<3>
+          $$q_1=u_1\Delta_1+v_1,\quad\ldots,\quad q_\tau=u_\tau\Delta_\tau+v_\tau$$
+        \onslide<4>
+          $$q'_1=u\Delta_1+v_1,\quad\ldots,\quad q'_\tau=u\Delta_\tau+v_\tau$$
+        \onslide<5>
+          $$q=u\Delta+v$$
+      \end{overprint}
+    \end{column}
+    \begin{column}{0.15\textwidth}
+      \vspace{-2em}
+      \begin{overprint}
+        \onslide<3-4>
+          $$\text{in }\mathbb{F}_{2^n}$$
+        \onslide<5>
+          $$\text{in }\mathbb{F}_{2^\lambda}$$
+      \end{overprint}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Combining small \$-VOLEs}
   Multiple \$-VOLEs: $q_i=u_i\Delta_i+v_i\hfill i\in [0,\tau),\ \lambda=n\tau$\\
   \ \\\pause
   Correction values: $c_i=u_0-u_i$\\
