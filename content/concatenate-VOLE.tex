@@ -32,7 +32,9 @@
   \end{alertblock}
   \pause
   \ \\
-  Random \emph{linear} universal hash function: $H$\\
+  Random $\mathbb{F}_2$-\emph{linear} universal hash function %
+  \only<-2>{$H:\mathbb{F}_2^\ell\to\mathbb{F}_2^{\lambda+B}$}%
+  \only<3->{$H:\mathbb{F}_2^{\hat{\ell}}\to\mathbb{F}_2^{\lambda+B}$}\\
   Send: $\tilde{u}=Hu$, $\tilde{v}=Hv$ \\
   Check: $\tilde{q}=\tilde{u}\Delta+\tilde{v}$ with $\tilde{q}=Hq$\\
   \pause
