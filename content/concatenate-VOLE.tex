@@ -6,9 +6,8 @@
   \begin{block}{Solution}
     Combine $\tau$ small VOLEs with $\Delta\in \mathbb{F}_{2^n}$, in $O(\tau2^n)$ operations, for $\lambda=n\tau$.
   \end{block}
+  \ \\
   \begin{columns}
-    \begin{column}{0.15\textwidth}
-    \end{column}
     \begin{column}{0.7\textwidth}
       \begin{overprint}
         \onslide<3>
@@ -19,7 +18,8 @@
           $$q=u\Delta+v$$
       \end{overprint}
     \end{column}
-    \begin{column}{0.15\textwidth}
+    \hspace{-7em}
+    \begin{column}{0.01\textwidth}
       \vspace{-2em}
       \begin{overprint}
         \onslide<3-4>
@@ -33,12 +33,16 @@
 
 
 \begin{frame}{Combining small \$-VOLEs}
-  Multiple \$-VOLEs: $q_i=u_i\Delta_i+v_i\hfill i\in [0,\tau),\ \lambda=n\tau$\\
+  Multiple \$-VOLEs: $q_i=u_i\Delta_i+v_i\hfill i\in [1,\tau],\ \lambda=n\tau$\\
+  $$q_i\in \mathbb{F}_{2^n}^\ell,\quad u_i\in \mathbb{F}_2^\ell$$
   \ \\\pause
   Correction values: $c_i=u_0-u_i$\\
   \hphantom{Correction values:} $q'_i\leftarrow q_i+c_i\Delta_i$\\
   New VOLEs: $q'_i=u\Delta_i+v_i\hfill u=u_0$\\
-  \ \\\pause
+\end{frame}
+
+
+\begin{frame}{Combining small \$-VOLEs}
   Concatenate bit representations:
   \vspace{-1em}
   $$v=[v_0\ldots v_{\tau-1}],\qquad\Delta=[\Delta_0\ldots\Delta_{\tau-1}],\qquad q=[q'_0\ldots q'_{\tau-1}]$$
