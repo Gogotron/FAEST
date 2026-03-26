@@ -44,9 +44,13 @@
 
 
 \begin{frame}{Combining small \$-VOLEs}
+  We have: $q_i\in \mathbb{F}_{2^n}^\ell,\ u\in \mathbb{F}_2^\ell,\ \Delta_i\in \mathbb{F}_{2^n},\ v_i\in \mathbb{F}_{2^n}^\ell$
+  \hfill $i\in [1,\tau],\ \lambda=n\tau$\\
+  $$q'_1=u\Delta_1+v_1,\quad\ldots,\quad q'_\tau=u\Delta_\tau+v_\tau$$
+  \ \\\ \\\pause
   Concatenate bit representations:
   \vspace{-1em}
-  $$v=[v_0\ldots v_{\tau-1}],\qquad\Delta=[\Delta_0\ldots\Delta_{\tau-1}],\qquad q=[q'_0\ldots q'_{\tau-1}]$$
+  $$q=[q'_1\ldots q'_\tau],\qquad\Delta=[\Delta_1\ldots\Delta_\tau],\qquad v=[v_1\ldots v_\tau]$$
 
   \begin{overprint}
     \onslide<4>
