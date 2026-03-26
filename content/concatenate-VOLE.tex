@@ -1,21 +1,21 @@
 \begin{frame}{Concatenating \$-VOLEs}
   GGM tree with $n$ leafs yields VOLE with $\Delta\in \mathbb{F}_{2^n}$ in $O(2^n)$ operations. \\
   \ \\\pause
-  Multiple \$-VOLEs:  $(u_i,v_i,\Delta_i,q_i)\hfill i\in [0,\tau),\ \lambda=n\tau$\\
+  Multiple \$-VOLEs: $q_i=u_i\Delta_i+v_i\hfill i\in [0,\tau),\ \lambda=n\tau$\\
   \ \\\pause
   Correction values: $c_i=u_0-u_i$\\
-  \hphantom{Correction values:} $q_i\leftarrow q_i+c_i\Delta_i$\\
-  New VOLEs: $(u, v_i, \Delta_i, q_i),\ q_i=u\Delta_i+v_i\hfill u=u_0$\\
+  \hphantom{Correction values:} $q'_i\leftarrow q_i+c_i\Delta_i$\\
+  New VOLEs: $q'_i=u\Delta_i+v_i\hfill u=u_0$\\
   \ \\\pause
   Concatenate bit representations:
   \vspace{-1em}
-  $$v=[v_0\ldots v_{\tau-1}],\qquad\Delta=[\Delta_0\ldots\Delta_{\tau-1}],\qquad q=[q_0\ldots q_{\tau-1}]$$
+  $$v=[v_0\ldots v_{\tau-1}],\qquad\Delta=[\Delta_0\ldots\Delta_{\tau-1}],\qquad q=[q'_0\ldots q'_{\tau-1}]$$
 
   \begin{overprint}
     \onslide<4>
-    $$q_i=u\Delta_i+v_i\text{ verified in }\mathbb{F}_{2^n}$$
+    $$q'_i=u\Delta_i+v_i\text{ verified in }\mathbb{F}_{2^n}$$
     \onslide<5>
-    $$q_i=u\Delta_i+v_i\text{ verified bit by bit in }\mathbb{F}_2^n$$
+    $$q'_i=u\Delta_i+v_i\text{ verified bit by bit in }\mathbb{F}_2^n$$
     \onslide<6>
     $$q=u\Delta+v\text{ verified bit by bit in }\mathbb{F}_2^{n\tau}=\mathbb{F}_2^\lambda$$
     \onslide<7>
