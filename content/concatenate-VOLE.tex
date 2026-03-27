@@ -34,7 +34,7 @@
 
 \begin{frame}{Combining small \$-VOLEs}
   Multiple \$-VOLEs: $q_i=u_i\Delta_i+v_i\hfill i\in [1,\tau],\ \lambda=n\tau$\\
-  $$q_i\in \mathbb{F}_{2^n}^\ell,\quad u_i\in \mathbb{F}_2^\ell,\quad\Delta_i\in \mathbb{F}_{2^n},\quad v_i\in \mathbb{F}_{2^n}^\ell$$
+  $$q_i\in \mathbb{F}_{2^n}^{\hat{\ell}},\quad u_i\in \mathbb{F}_2^{\hat{\ell}},\quad\Delta_i\in \mathbb{F}_{2^n},\quad v_i\in \mathbb{F}_{2^n}^{\hat{\ell}}$$
   \ \\\ \\\pause
   Correction values: $c_i=u_0-u_i\hfill u=u_0$\\
   \hphantom{Correction values:} $q'_i=q_i+c_i\Delta_i$\\
@@ -44,7 +44,7 @@
 
 
 \begin{frame}{Combining small \$-VOLEs}
-  We have: $q_i\in \mathbb{F}_{2^n}^\ell,\ u\in \mathbb{F}_2^\ell,\ \Delta_i\in \mathbb{F}_{2^n},\ v_i\in \mathbb{F}_{2^n}^\ell$
+  We have: $q_i\in \mathbb{F}_{2^n}^{\hat{\ell}},\ u\in \mathbb{F}_2^{\hat{\ell}},\ \Delta_i\in \mathbb{F}_{2^n},\ v_i\in \mathbb{F}_{2^n}^{\hat{\ell}}$
   \hfill $i\in [1,\tau],\ \lambda=n\tau$\\
   $$q'_1=u\Delta_1+v_1,\quad\ldots,\quad q'_\tau=u\Delta_\tau+v_\tau$$
   \ \\\ \\\pause
@@ -74,14 +74,12 @@
   \end{alertblock}
   \pause
   \ \\
-  Random $\mathbb{F}_2$-\emph{linear} universal hash function %
-  \only<-2>{$H:\mathbb{F}_2^\ell\to\mathbb{F}_2^{\lambda+B}$}%
-  \only<3->{$H:\mathbb{F}_2^{\hat{\ell}}\to\mathbb{F}_2^{\lambda+B}$}\\
+  Random $\mathbb{F}_2$-\emph{linear} universal hash function $H:\mathbb{F}_2^{\hat{\ell}}\to\mathbb{F}_2^{\lambda+B}$\\
   Send: $\tilde{u}=Hu$, $\tilde{v}=Hv$ \\
   Check: $\tilde{q}=\tilde{u}\Delta+\tilde{v}$ with $\tilde{q}=Hq$\\
   \pause
   \ \\
-  Reveals $(\lambda+B)$-bit linear function of $u\in \mathbb{F}_2^\ell$.\\
-  Use longer VOLE: $\hat{\ell}=\ell+\lambda+B$,\quad $u\in \mathbb{F}_2^{\hat{\ell}}$\\
+  Reveals $(\lambda+B)$-bit linear function of $u\in \mathbb{F}_2^{\hat{\ell}}$.\\
+  Construct longer VOLE: $\hat{\ell}=\ell+2\lambda\ \rightarrow\ \hat{\ell}=\ell+3\lambda+B$\\
   Discard extra $\lambda+B$ bits
 \end{frame}
