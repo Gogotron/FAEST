@@ -277,10 +277,10 @@
     Mask & $\left<z\right>^3\rightarrow P(X)=$&$0X^3+$&$p_2X^2+p_1X+p_0$\\
     \pause
     with & $P'(X)=$&&$p_2'X^2+p_1'X+p_0'$ \pause\\ % For some reason, putting pause after the newline breaks things
-    \multicolumn{2}{l}{to get $P(X)+P'(X)=$}&$\tilde{P}(X)=$&$\tilde{p}_2X^2+\tilde{p}_1^X+\tilde{p}_0$\\
+    \multicolumn{2}{l}{to get $P(X)+P'(X)=$}&$\bar{P}(X)=$&$\bar{p}_2X^2+\bar{p}_1^X+\bar{p}_0$\\
   \end{tabular}\\[1em]
   \pause
-  Verifier knows $P(\Delta)=q,\ P'(\Delta)=q'$ and will check $\tilde{P}(\Delta)=q+q'$.\\[1em]
+  Verifier knows $P(\Delta)=q,\ P'(\Delta)=q'$ and will check $\bar{P}(\Delta)=\bar{q}=q+q'$.\\[1em]
   \pause
   How do we get $P'(X)\in \mathbb{F}_{2^{\lambda}}[X]_{\scriptscriptstyle3}$ and $P'(\Delta)$ ?
 \end{frame}
@@ -378,12 +378,12 @@
         };
       }
       \only<4->{
-        \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $\tilde{p}_i$};
+        \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $\bar{p}_i$};
         \node[computation,hideable,anchor=west] at (2.25,-6) {%
           \begin{tabular}{l}%
             Correct $q\leftarrow q+d\Delta$ \\
-            Compute $\left<z\right>$ and $\tilde{q}$,\\
-            check $\tilde{p}_2\Delta^2+\tilde{p}_1\Delta+\tilde{p}_0=\tilde{q}$.
+            Compute $\left<z\right>$ and $\bar{q}$,\\
+            check $\bar{p}_2\Delta^2+\bar{p}_1\Delta+\bar{p}_0=\bar{q}$.
           \end{tabular}%
         };
       }
