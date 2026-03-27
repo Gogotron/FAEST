@@ -145,7 +145,7 @@
                 \begin{tabular}{c}
                   $w \in \mathbb{F}_2^\ell$
                   \vspace{-0.2em}\\
-                  {\tiny$\ell=128{\cdot}10$}
+                  {\scriptsize$\ell\approx10\lambda$}
                 \end{tabular}
               };
             }
@@ -280,7 +280,8 @@
     \multicolumn{2}{l}{to get $P(X)+P'(X)=$}&$\bar{P}(X)=$&$\bar{p}_2X^2+\bar{p}_1^X+\bar{p}_0$\\
   \end{tabular}\\[1em]
   \pause
-  Verifier knows $P(\Delta)=q_z,\ P'(\Delta)=q_{\scriptscriptstyle\mathsf{mask}}'$ and will check $\bar{P}(\Delta)=\bar{q}=q+q'$.\\[1em]
+  Verifier knows $P(\Delta)=q_z,\ P'(\Delta)=q_{\scriptscriptstyle\mathsf{mask}}'$ and will check $\bar{P}(\Delta)=\bar{q}=q+q'$.
+  $$\bar{P}:=P+P'$$\\[1em]
   \pause
   How do we get $P'(X)\in \mathbb{F}_{2^{\lambda}}[X]_{\scriptscriptstyle3}$ and $P'(\Delta)$ ?
 \end{frame}
@@ -298,8 +299,7 @@
   \end{array}$$\\[1em]
   \pause
   Prover masks with: $P'(X)=u_1X^2+(v_1+u_2)X+v_2$ \\
-  Verifier masks with: $P'(\Delta)=q_{\scriptscriptstyle\mathsf{mask}}'=q_1\Delta+q_2$\\
-  $$P+P'=:\bar{P}$$
+  Verifier masks with: $P'(\Delta)=q_{\scriptscriptstyle\mathsf{mask}}'=q_1\Delta+q_2$\\[1em]
 \end{frame}
 
 
