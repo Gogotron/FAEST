@@ -369,6 +369,8 @@
         \draw[<-,arrow] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [arrow-label] {amortization challenge $h_i$};
         \node[computation,hideable,anchor=east] at (-2.25,-4.25) {%
           \begin{tabular}{l}
+            {\tiny$\left<z_i\right>=\left<a_i(a_ib_i-1)\right>$}\\
+            {\tiny$\left<z_i\right>=\left<b_i(a_ib_i-1)\right>$}\\
             $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
             \hspace{1.6em}{\tiny$=0X^3+p_2X^2+p_1X+p_0$}\\
             \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
