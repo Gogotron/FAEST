@@ -4,7 +4,7 @@
     \item $\texttt{KeyExpansion}$
     \item 10-14 rounds, in each round:
       \begin{enumerate}
-        \item $\texttt{SubBytes}$, non-linear operation $x\mapsto x^{-1}$ (and $0\mapsto 0$)
+        \item $\texttt{SubBytes}$, non-linear operation $x\mapsto x^{-1}$ (and $0\mapsto 0$) in $\mathbb{F}_{2^8}$
         \item $\texttt{ShiftRows}$, $\texttt{MixColumns}$, $\texttt{AddRoundKey}$, linear operations
       \end{enumerate}
   \end{enumerate}
@@ -14,7 +14,7 @@
   \\\ \\
   \pause
   To prove that $b=a^{-1}$ or $a=b=0$, \\
-  we prove that $a(ab-1)=0$ and $b(ab-1)=0$.
+  we prove that $a(ab-1)=0$ and $b(ab-1)=0$ in $\mathbb{F}_{2^8}$.
   \pause
   \\\ \\\ \\
   \vfill
