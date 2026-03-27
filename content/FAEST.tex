@@ -382,9 +382,10 @@
         \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $\bar{p}_i$};
         \node[computation,hideable,anchor=west] at (2.25,-6) {%
           \begin{tabular}{l}%
-            Correct $q_w=q+d\Delta$ \\
-            Compute $\left<z\right>$ and $\bar{q}$,\\
-            check $\bar{p}_2\Delta^2+\bar{p}_1\Delta+\bar{p}_0=\bar{q}$.
+            Correct $q_w=q+d\Delta$. \\
+            Compute $\left<z\right>$\\
+            and $\bar{q}=q_z+q_{\scriptscriptstyle\mathsf{mask}}'$,\\
+            check {\scriptsize$\bar{p}_2\Delta^2+\bar{p}_1\Delta+\bar{p}_0=\bar{q}$}.
           \end{tabular}%
         };
       }
