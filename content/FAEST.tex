@@ -271,14 +271,34 @@
 \end{frame}
 
 
-\begin{frame}{}
-  Mask $P(X)=0X^3+a_2X^2+a_1X+a_0$\\
-  Use 2 VOLEs with $u_1,u_2$ in $\mathbb{F}_{2^\lambda}$\\
-  $$\setlength{\arraycolsep}{1pt}\begin{array}{cccccccccccc}
-    a_2&X^2&+&a_1&X&+&a_0\\
-    u_1&X&+&v_1& & & \\
-     & & &u_2&X&+&v_2\\
-  \end{array}$$
+\begin{frame}{Masking a polynomial}
+  \setlength{\tabcolsep}{1pt}
+  \begin{tabular}{lrrr}
+    Mask & $\left<z\right>^3\rightarrow P(X)=$&$0X^3+$&$a_2X^2+a_1X+a_0$\\
+    \pause
+    with & $P'(X)=$&&$a_2'X^2+a_1'X+a_0'$ \pause\\ % For some reason, putting pause after the newline breaks things
+    \multicolumn{2}{l}{to get $P(X)+P'(X)=$}&$\tilde{P}(X)=$&$\tilde{a}_2X^2+\tilde{a}_1^X+\tilde{a}_0$\\
+  \end{tabular}\\[1em]
+  \pause
+  Verifier knows $P(\Delta)=q,\ P'(\Delta)=q'$ and will check $\tilde{P}(\Delta)=q+q'$.\\[1em]
+  \pause
+  How do we get $P'(X)\in \mathbb{F}_{2^{\lambda}}[X]_{\scriptscriptstyle3}$ and $P'(\Delta)$ ?
+\end{frame}
+
+
+\begin{frame}{Masking a polynomial}
+  We want $P'(X)=a_2'X^2+a_1'X+a_0'$,\\
+  and $P'(\Delta)=q'$.\\[1em]
+  \pause
+  Use 2 VOLEs with $u_1,u_2$ in $\mathbb{F}_{2^\lambda}$, $u_i$ lifted from $\lambda$ VOLEs in $\mathbb{F}_2$:\\
+  $$\setlength{\arraycolsep}{1pt}\begin{array}{cccccccc}
+    q'=&a_2'&\Delta^2&+&a_1'&\Delta&+&a_0'\\
+    q_1=&u_1 &\Delta&+&v_1& & & \\
+    q_2=& & & &u_2&\Delta&+&v_2\\
+  \end{array}$$\\[1em]
+  \pause
+  Prover masks with: $P'(X)=u_1X^2+(v_1+u_2)X+v_2$ \\
+  Verifier masks with: $P'(\Delta)=q'=q_1\Delta+q_2$
 \end{frame}
 
 
