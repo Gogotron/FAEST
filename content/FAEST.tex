@@ -358,7 +358,7 @@
 
       \only<2->{
         \draw[->,arrow] ($(Alice)+(0,-2.5)$) -- ($(Bob)+(0,-3)$) node [arrow-label] {correction value $d$};
-        \node[computation,hideable,anchor=east] at (-2.5,-2.5) {%
+        \node[computation,hideable,anchor=east] at (-2.25,-2.5) {%
           \begin{tabular}{r}
             VOLE commit to witness\\
             $d=w-u$
@@ -367,7 +367,7 @@
       }
       \only<3->{
         \draw[<-,arrow] ($(Alice)+(0,-4)$) -- ($(Bob)+(0,-3.5)$) node [arrow-label] {amortization challenge $h_i$};
-        \node[computation,hideable,anchor=east] at (-2.5,-4.25) {%
+        \node[computation,hideable,anchor=east] at (-2.25,-4.25) {%
           \begin{tabular}{l}
             $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
             \hspace{1.6em}{\tiny$=0X^3+p_2X^2+p_1X+p_0$}\\
@@ -386,7 +386,7 @@
         };
       }
       \only<8->{%
-        \node[computation,anchor=west] at (2.5,-4.5) {%
+        \node[computation,anchor=west] at (2.25,-4.5) {%
           \begin{tabular}{l}%
             Check $\mathsf{open_{tree}}\rightarrow\mathsf{com_{tree}}$ \\
             $q\leftarrow \mathsf{open_{tree}},\Delta,c_i$ \\
