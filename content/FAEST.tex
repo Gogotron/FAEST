@@ -267,17 +267,17 @@
   \ \\\ \\
   \ \\\ \\
   \pause
-  Prove $\left<z\right>$ is commitment to 0, revealing masked coefficients of polynomial commitment $P(X)=0X^3+a_2X^2+a_1X+a_0$
+  Prove $\left<z\right>$ is commitment to 0, revealing masked coefficients of polynomial commitment $P(X)=0X^3+p_2X^2+p_1X+p_0$
 \end{frame}
 
 
 \begin{frame}{Masking a polynomial}
   \setlength{\tabcolsep}{1pt}
   \begin{tabular}{lrrr}
-    Mask & $\left<z\right>^3\rightarrow P(X)=$&$0X^3+$&$a_2X^2+a_1X+a_0$\\
+    Mask & $\left<z\right>^3\rightarrow P(X)=$&$0X^3+$&$p_2X^2+p_1X+p_0$\\
     \pause
-    with & $P'(X)=$&&$a_2'X^2+a_1'X+a_0'$ \pause\\ % For some reason, putting pause after the newline breaks things
-    \multicolumn{2}{l}{to get $P(X)+P'(X)=$}&$\tilde{P}(X)=$&$\tilde{a}_2X^2+\tilde{a}_1^X+\tilde{a}_0$\\
+    with & $P'(X)=$&&$p_2'X^2+p_1'X+p_0'$ \pause\\ % For some reason, putting pause after the newline breaks things
+    \multicolumn{2}{l}{to get $P(X)+P'(X)=$}&$\tilde{P}(X)=$&$\tilde{p}_2X^2+\tilde{p}_1^X+\tilde{p}_0$\\
   \end{tabular}\\[1em]
   \pause
   Verifier knows $P(\Delta)=q,\ P'(\Delta)=q'$ and will check $\tilde{P}(\Delta)=q+q'$.\\[1em]
@@ -287,12 +287,12 @@
 
 
 \begin{frame}{Masking a polynomial}
-  We want $P'(X)=a_2'X^2+a_1'X+a_0'$,\\
+  We want $P'(X)=p_2'X^2+p_1'X+p_0'$,\\
   and $P'(\Delta)=q'$.\\[1em]
   \pause
   Use 2 VOLEs with $u_1,u_2$ in $\mathbb{F}_{2^\lambda}$, $u_i$ lifted from $\lambda$ VOLEs in $\mathbb{F}_2$:\\
   $$\setlength{\arraycolsep}{1pt}\begin{array}{cccccccc}
-    q'=&a_2'&\Delta^2&+&a_1'&\Delta&+&a_0'\\
+    q'=&p_2'&\Delta^2&+&p_1'&\Delta&+&p_0'\\
     q_1=&u_1 &\Delta&+&v_1& & & \\
     q_2=& & & &u_2&\Delta&+&v_2\\
   \end{array}$$\\[1em]
@@ -370,18 +370,18 @@
         \node[computation,hideable,anchor=east] at (-2.5,-4.25) {%
           \begin{tabular}{l}
             $\left<z\right>=\sum_{i=1}^{C}h_i\left<z_i\right>$\\
-            \hspace{1.6em}{\tiny$=0X^3+a_2X^2+a_1X+a_0$}\\
+            \hspace{1.6em}{\tiny$=0X^3+p_2X^2+p_1X+p_0$}\\
             \hspace{1.6em}{\scriptsize masked with 2 VOLEs}
           \end{tabular}%
         };
       }
       \only<4->{
-        \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $a_i$};
-        \node[computation,hideable,anchor=west] at (2.5,-6) {%
+        \draw[->,arrow] ($(Alice)+(0,-4.5)$) -- ($(Bob)+(0,-5)$) node [arrow-label] {masked coefficients $\tilde{p}_i$};
+        \node[computation,hideable,anchor=west] at (2.25,-6) {%
           \begin{tabular}{l}%
             Correct $q\leftarrow q+d\Delta$ \\
-            Compute $\left<z\right>$ and check \\
-            $a_2\Delta^2+a_1\Delta+a_0$
+            Compute $\left<z\right>$ and $\tilde{q}$,\\
+            check $\tilde{p}_2\Delta^2+\tilde{p}_1\Delta+\tilde{p}_0=\tilde{q}$.
           \end{tabular}%
         };
       }
